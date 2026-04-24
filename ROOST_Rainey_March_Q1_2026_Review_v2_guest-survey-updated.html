@@ -1,0 +1,1725 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ROOST Rainey · March 2026 + Q1 2026 Recap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --slate:#4A6572;
+    --slate-dark:#3A525C;
+    --slate-deeper:#2F434C;
+    --coral:#D65C3C;
+    --coral-deep:#BA4B2E;
+    --ink:#2E2E2E;
+    --ink-soft:#545B62;
+    --muted:#9AA2A8;
+    --line:#E3E6E8;
+    --softgray:#F6F7F8;
+    --white:#FFFFFF;
+    --good:#5A8F6B;
+    --bad:#B4533C;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;background:#F0F1F3;color:var(--ink);
+    font-family:"Lato","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;line-height:1.5;
+    -webkit-font-smoothing:antialiased;}
+  .hero, .sectionband{scroll-margin-top:64px;}
+
+  /* ===== Top navigation ===== */
+  .topnav{position:sticky;top:0;z-index:50;background:var(--slate);color:#fff;
+    border-bottom:2px solid var(--coral);box-shadow:0 1px 3px rgba(47,67,76,.12);}
+  .topnav-inner{max-width:1180px;margin:0 auto;padding:10px 24px;display:flex;
+    align-items:center;gap:18px;flex-wrap:wrap;}
+  .topnav .brand{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);flex-shrink:0;}
+  .topnav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px;flex:1;}
+  .topnav li{display:inline-block;}
+  .topnav a{display:inline-block;color:rgba(255,255,255,.88);text-decoration:none;
+    padding:6px 10px;font-size:12px;letter-spacing:.02em;border-radius:3px;
+    transition:background .15s ease,color .15s ease;}
+  .topnav a:hover{background:rgba(255,255,255,.10);color:#fff;}
+  .topnav a.top-link{color:var(--coral);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11px;}
+  .topnav a.top-link:hover{background:rgba(249,168,37,.18);color:var(--coral);}
+  @media(max-width:820px){
+    .topnav-inner{padding:8px 16px;gap:8px;}
+    .topnav a{padding:5px 8px;font-size:11px;}
+  }
+
+  /* ===== Floating Back to Top button ===== */
+  .backtotop-float{position:fixed;right:20px;bottom:20px;z-index:60;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:50%;background:var(--slate);color:#fff;
+    text-decoration:none;box-shadow:0 4px 12px rgba(47,67,76,.25);
+    font-size:16px;font-weight:700;transition:background .15s,transform .15s;}
+  .backtotop-float:hover{background:var(--coral);transform:translateY(-2px);}
+  .backtotop-float::before{content:"\2191";}
+
+  /* ===== Table of Contents ===== */
+  .toc{padding:40px 56px 8px;background:var(--white);border-bottom:1px solid var(--line);}
+  .toc .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:4px;}
+  .toc h2{font-size:22px;font-weight:300;color:var(--slate-deeper);margin:0 0 6px;letter-spacing:-.005em;}
+  .toc .sub{color:var(--muted);font-size:13px;margin-bottom:22px;}
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;padding-bottom:20px;}
+  .toc-item{display:flex;align-items:flex-start;gap:14px;padding:10px 12px;border:1px solid var(--line);border-radius:4px;text-decoration:none;color:var(--ink);transition:border-color .15s,background .15s,transform .15s;}
+  .toc-item:hover{border-color:var(--coral);background:#FDF6F3;transform:translateX(2px);}
+  .toc-item .num{font-size:18px;font-weight:300;color:var(--coral);min-width:30px;line-height:1;padding-top:2px;}
+  .toc-item .body{flex:1;}
+  .toc-item .name{font-size:14px;font-weight:700;color:var(--slate-deeper);line-height:1.25;}
+  .toc-item .desc{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+
+  /* ===== Back to Contents link ===== */
+  .backtocontents-wrap{text-align:center;padding:18px 56px 8px;background:var(--white);}
+  .backtocontents{display:inline-flex;align-items:center;gap:6px;font-size:11px;
+    color:var(--slate);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;padding:6px 14px;border:1px solid var(--line);border-radius:3px;
+    transition:background .15s,color .15s,border-color .15s;}
+  .backtocontents:hover{background:var(--slate);color:#fff;border-color:var(--slate);}
+  .backtocontents::before{content:"\2191";margin-right:2px;}
+
+  /* ===== PDF / Print styles ===== */
+  @media print{
+    @page{margin:0.5in;}
+    html,body{background:#fff;scroll-behavior:auto;}
+    .topnav,.backtotop-float,.print-help{display:none !important;}
+    .report{box-shadow:none;max-width:100%;margin:0;}
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+    .hero,.sectionband,.toc,section.part,[id^="section-"],#contents,#top{scroll-margin-top:0 !important;}
+    .hero,.sectionband,.toc{page-break-inside:avoid;break-inside:avoid;}
+    .kpi-row,.platforms,.take,.bench,.losgrid,.toc-grid,.toc-item,.prio-grid,.prio-card{break-inside:avoid;page-break-inside:avoid;}
+    section.part{break-inside:auto;}
+    a{color:var(--coral) !important;text-decoration:none !important;}
+    .toc-item{color:inherit !important;}
+    .toc-item:hover{background:transparent;transform:none;border-color:var(--line);}
+    .backtocontents-wrap{padding:10px 56px 0;}
+    .backtocontents{display:inline-block;color:var(--slate) !important;border:1px solid var(--line);}
+  }
+  a{color:var(--coral);}
+  .report{max-width:1180px;margin:0 auto;background:var(--white);box-shadow:0 1px 2px rgba(47,67,76,.04),0 8px 32px rgba(47,67,76,.08);}
+
+  /* ===== Hero ===== */
+  .hero{background:var(--slate);color:#fff;padding:48px 56px 42px;position:relative;}
+  .hero .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:700;}
+  .hero h1{font-size:40px;font-weight:300;margin:10px 0 4px;letter-spacing:-.01em;line-height:1.1;}
+  .hero .sub{color:rgba(255,255,255,.8);font-size:15px;}
+  .hero .rule{width:54px;height:2px;background:var(--coral);margin:22px 0 16px;}
+  .hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .hero .chip{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.9);
+    border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 12px;font-weight:700;}
+  .hero .meta{position:absolute;right:56px;top:48px;color:rgba(255,255,255,.7);font-size:12px;text-align:right;letter-spacing:.08em;text-transform:uppercase;}
+
+  /* ===== Section scaffolding ===== */
+  section.part{padding:44px 56px;border-bottom:1px solid var(--line);}
+  section.part:last-of-type{border-bottom:none;}
+  .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:6px;}
+  h2.ph{font-size:26px;font-weight:300;color:var(--slate-deeper);margin:0 0 6px;letter-spacing:-.005em;}
+  .plede{color:var(--ink-soft);font-size:14px;max-width:760px;margin-bottom:22px;}
+
+  /* ===== TL;DR callout ===== */
+  .tldr{background:var(--softgray);border-left:4px solid var(--coral);padding:16px 20px;border-radius:2px;margin:20px 0 0;}
+  .tldr .tag{font-size:11px;letter-spacing:.14em;color:var(--coral);font-weight:700;text-transform:uppercase;}
+  .tldr p{margin:4px 0 0;color:var(--ink);font-size:14px;line-height:1.55;}
+
+  /* ===== KPI row ===== */
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:4px 0 10px;}
+  .kpi{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:18px 18px 16px;text-align:left;}
+  .kpi .lbl{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700;}
+  .kpi .val{font-size:36px;font-weight:300;color:var(--coral);line-height:1;margin:10px 0 4px;}
+  .kpi .delta{font-size:12px;font-weight:700;color:var(--good);}
+  .kpi .delta.dn{color:var(--bad);}
+  .kpi .delta.neu{color:var(--muted);}
+  .kpi .sub{font-size:11px;color:var(--muted);margin-top:4px;}
+
+  /* ===== Platform scoreboard ===== */
+  .platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .platform{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:22px 22px 20px;text-align:center;}
+  .platform .name{font-size:14px;color:var(--slate);font-weight:700;letter-spacing:.02em;}
+  .platform .val{font-size:58px;font-weight:300;color:var(--coral);line-height:1;margin:10px 0 2px;}
+  .platform .stars{color:var(--coral);font-size:14px;letter-spacing:3px;}
+  .platform .scale{font-size:11px;color:var(--muted);margin-top:4px;}
+  .platform .rank{margin-top:12px;font-size:12px;color:var(--slate);font-weight:700;}
+  .platform .note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.45;}
+
+  /* ===== Two-column layout ===== */
+  .two{display:grid;grid-template-columns:2fr 1fr;gap:24px;}
+  .two.flip{grid-template-columns:1fr 2fr;}
+  .two.half{grid-template-columns:1fr 1fr;gap:20px;}
+
+  /* ===== Card ===== */
+  .card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:20px 22px;}
+  .card h3{margin:0 0 4px;font-size:11px;color:var(--coral);font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+  .card h2{margin:0 0 14px;font-size:17px;color:var(--slate-deeper);font-weight:700;line-height:1.3;}
+  .card.dark{background:var(--slate);color:#fff;border-color:var(--slate);}
+  .card.dark h2{color:#fff;}
+  .card.dark h3{color:var(--coral);}
+  .card.dark p, .card.dark li{color:rgba(255,255,255,.92);}
+  .card ul{margin:0;padding:0;list-style:none;}
+  .card ul li{position:relative;padding:6px 0 6px 18px;font-size:13px;line-height:1.5;}
+  .card ul li::before{content:"";position:absolute;left:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--coral);}
+
+  /* ===== Data table ===== */
+  table.data{width:100%;border-collapse:collapse;font-size:13px;}
+  table.data thead th{color:var(--slate);border-bottom:1.5px solid var(--slate);font-weight:700;padding:9px 10px;text-align:right;font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+  table.data thead th:first-child{text-align:left;}
+  table.data tbody td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;}
+  table.data tbody td:first-child{text-align:left;}
+  table.data tbody tr:last-child td{border-bottom:none;}
+  table.data .pos{color:var(--good);font-weight:700;}
+  table.data .neg{color:var(--bad);font-weight:700;}
+  table.data .neu{color:var(--muted);}
+  table.data tr.us td{background:#FBEEE9;color:var(--coral-deep);font-weight:700;}
+  table.data tr.us td.pos{color:var(--good);font-weight:700;}
+  table.data tr.us td.neg{color:var(--bad);font-weight:700;}
+  table.data tr.total td{border-top:2px solid var(--slate);font-weight:700;color:var(--slate-deeper);}
+  table.data tr.total td.pos{color:var(--good);}
+  table.data tr.total td.neg{color:var(--bad);}
+
+  /* ===== Stacked bar (NPS) ===== */
+  .stacked{display:grid;gap:12px;}
+  .sbar{display:grid;grid-template-columns:86px 1fr;align-items:center;gap:14px;}
+  .sbar .slabel{font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700;}
+  .sbar .strack{height:28px;display:flex;border-radius:3px;overflow:hidden;}
+  .sbar .seg{display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;}
+  .seg.prom{background:var(--slate);}
+  .seg.pass{background:#B8C4CA;color:var(--ink);}
+  .seg.det{background:var(--coral);}
+  .legend{display:flex;gap:16px;margin-top:12px;font-size:11px;color:var(--muted);}
+  .legend span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:2px;vertical-align:baseline;}
+  .legend .l-prom::before{background:var(--slate);}
+  .legend .l-pass::before{background:#B8C4CA;}
+  .legend .l-det::before{background:var(--coral);}
+
+  /* ===== Sentiment horizontal bar chart ===== */
+  .sent-chart{display:grid;gap:10px;margin-top:8px;}
+  .sent-row{display:grid;grid-template-columns:130px 1fr 74px;align-items:center;gap:14px;}
+  .sent-row .slbl{font-size:12px;font-weight:700;color:var(--slate-deeper);letter-spacing:.02em;}
+  .sent-row .strack{position:relative;height:22px;background:var(--softgray);border-radius:3px;overflow:hidden;}
+  .sent-row .sfill{height:100%;border-radius:3px;}
+  .sent-row .sfill.pos{background:var(--good);}
+  .sent-row .sfill.mid{background:var(--slate);}
+  .sent-row .sfill.neg{background:var(--bad);}
+  .sent-row .sval{text-align:right;font-size:13px;font-weight:700;color:var(--slate-deeper);}
+  .sent-row .smention{font-size:10px;color:var(--muted);font-weight:400;}
+  .sent-axis{display:grid;grid-template-columns:130px 1fr 74px;gap:14px;font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;}
+  .sent-axis .atrack{display:flex;justify-content:space-between;}
+
+  /* ===== Theme card pair (pos/neg) ===== */
+  .theme-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;}
+  .theme-col .thdr{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding-bottom:8px;margin-bottom:10px;border-bottom:2px solid var(--line);}
+  .theme-col.pos .thdr{color:var(--good);border-bottom-color:var(--good);}
+  .theme-col.neg .thdr{color:var(--bad);border-bottom-color:var(--bad);}
+  .theme-item{padding:10px 0;border-bottom:1px solid var(--line);}
+  .theme-item:last-child{border-bottom:none;}
+  .theme-item .tname{font-size:13px;font-weight:700;color:var(--slate-deeper);display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .theme-item .tscore{font-size:12px;font-weight:700;color:var(--coral);letter-spacing:.02em;flex-shrink:0;}
+  .theme-item .tinsight{font-size:12px;color:var(--ink-soft);line-height:1.5;margin-top:4px;}
+  .theme-item .tmeta{font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;font-weight:700;}
+
+  /* ===== Ownership takeaway cards ===== */
+  .own-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;}
+  .own-card{border:1px solid var(--line);border-radius:4px;padding:16px 18px;background:var(--white);border-top:3px solid var(--slate);}
+  .own-card.pos{border-top-color:var(--good);}
+  .own-card.neg{border-top-color:var(--bad);}
+  .own-card.foc{border-top-color:var(--coral);}
+  .own-card .olbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .own-card .otitle{font-size:14px;font-weight:700;color:var(--slate-deeper);margin-bottom:6px;line-height:1.3;}
+  .own-card .odesc{font-size:12px;color:var(--ink-soft);line-height:1.5;}
+
+  /* ===== NPS hero ===== */
+  .nps-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:12px 0;}
+  .nps-circle{width:150px;height:150px;border-radius:50%;background:var(--coral);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .nps-circle .big{font-size:58px;font-weight:300;line-height:1;}
+  .nps-circle .cap{font-size:12px;font-weight:700;letter-spacing:.18em;margin-top:2px;}
+  .nps-delta{color:var(--good);font-weight:700;font-size:13px;margin-top:4px;}
+  .nps-note{font-size:11px;color:var(--muted);line-height:1.5;max-width:260px;}
+
+  /* ===== LOS small-multiples ===== */
+  .losgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .loschart{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:26px 28px 22px;display:flex;flex-direction:column;}
+  .loschart .chead{margin-bottom:22px;}
+  .loschart .ckicker{font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+  .loschart h2.ctitle{margin:0 0 10px;font-size:18px;color:var(--slate-deeper);font-weight:700;line-height:1.3;letter-spacing:-.005em;}
+  .loschart .clegend{display:flex;gap:14px;font-size:11px;color:var(--muted);}
+  .loschart .clegend span{display:flex;align-items:center;}
+  .loschart .clegend span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:1px;}
+  .loschart .clegend .l26::before{background:var(--coral);}
+  .loschart .clegend .l25::before{background:var(--slate);}
+
+  .losplot{position:relative;padding-bottom:26px;}
+  .losplot .losrows{display:grid;gap:14px;}
+  .losplot .losrow{display:grid;grid-template-columns:72px 1fr 62px;gap:12px;align-items:center;}
+  .losplot .losax{font-size:13px;font-weight:700;color:var(--slate-deeper);text-align:right;letter-spacing:.02em;}
+  .losplot .losbars2{display:flex;flex-direction:column;gap:5px;grid-column:2;}
+  .losplot .losvals2{display:flex;flex-direction:column;gap:5px;grid-column:3;align-items:flex-start;}
+  .losplot .hb{height:16px;}
+  .losplot .hbfill{height:100%;border-radius:1px;min-width:2px;}
+  .losplot .hbfill.y26{background:var(--coral);}
+  .losplot .hbfill.y25{background:var(--slate);}
+  .losplot .hbval{font-size:12px;font-weight:700;color:var(--ink);line-height:16px;height:16px;white-space:nowrap;letter-spacing:.01em;}
+  .losplot .axisbase{position:absolute;left:calc(72px + 12px);right:calc(62px + 12px);bottom:22px;height:1px;background:var(--line);}
+  .losplot .gridline{position:absolute;top:0;bottom:22px;border-left:1px dashed var(--line);width:0;pointer-events:none;}
+  .losplot .axislabel{position:absolute;bottom:0;font-size:10px;color:var(--muted);letter-spacing:.04em;font-weight:700;white-space:nowrap;transform:translateX(-50%);}
+  .losplot .axislabel.left{transform:none;}
+  .losplot .axislabel.right{transform:translateX(-100%);}
+
+  @media(max-width:820px){
+    .losgrid{grid-template-columns:1fr;}
+    .losrow{grid-template-columns:66px 1fr;gap:12px;}
+    .loschart{padding:20px 20px 18px;}
+  }
+
+  /* ===== Section divider band ===== */
+  .sectionband{background:var(--slate);color:#fff;padding:32px 56px;display:flex;justify-content:space-between;align-items:center;}
+  .sectionband .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);font-weight:700;}
+  .sectionband h2{margin:6px 0 0;font-size:30px;font-weight:300;letter-spacing:-.005em;}
+  .sectionband .right{color:rgba(255,255,255,.7);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:right;}
+
+  /* ===== Industry benchmark tiles ===== */
+  .bench{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .bmk{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:16px 18px;position:relative;}
+  .bmk .bname{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700;}
+  .bmk .bval{font-size:28px;font-weight:300;color:var(--coral);line-height:1;margin:8px 0 2px;}
+  .bmk .bbench{font-size:11px;color:var(--ink-soft);}
+  .bmk .bstatus{margin-top:8px;display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:999px;}
+  .bmk .bstatus.good{background:#E7F1EA;color:var(--good);}
+  .bmk .bstatus.mid{background:#FDEFE8;color:var(--coral-deep);}
+  .bmk .bstatus.bad{background:#F9E4DE;color:var(--bad);}
+
+  /* ===== KPI Benchmark matrix ===== */
+  .bmark-matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .bmark-card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:18px 20px;position:relative;border-top:3px solid var(--coral);}
+  .bmark-card.good{border-top-color:var(--good);}
+  .bmark-card.mid{border-top-color:#D4A017;}
+  .bmark-card.bad{border-top-color:var(--bad);}
+  .bmark-card .bmark-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:700;margin-bottom:10px;}
+  .bmark-card .bmark-val-big{font-size:30px;font-weight:300;color:var(--coral);line-height:1;margin:2px 0 10px;letter-spacing:-.01em;}
+  .bmark-card .bmark-row{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;color:var(--ink-soft);padding:5px 0;border-bottom:1px dashed var(--line);}
+  .bmark-card .bmark-row:last-of-type{border-bottom:none;}
+  .bmark-card .bmark-row .bmark-lbl{color:var(--muted);letter-spacing:.04em;}
+  .bmark-card .bmark-row .bmark-val{font-weight:700;color:var(--slate-deeper);font-size:13px;}
+  .bmark-card .bmark-bench{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);line-height:1.45;}
+  .bmark-card .bmark-bench strong{color:var(--slate-deeper);}
+  .bmark-card .bmark-status{margin-top:10px;display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:3px 10px;border-radius:999px;}
+  .bmark-card .bmark-status.good{background:#E7F1EA;color:var(--good);}
+  .bmark-card .bmark-status.mid{background:#FBF3E0;color:#8B6914;}
+  .bmark-card .bmark-status.bad{background:#F9E4DE;color:var(--bad);}
+
+  /* ===== Takeaways grid ===== */
+  .take{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .take .t{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:16px 18px;border-top:4px solid var(--coral);}
+  .take .t.g{border-top-color:var(--good);}
+  .take .t.w{border-top-color:var(--slate);}
+  .take .t.i{border-top-color:#B8C4CA;}
+  .take .t h4{margin:0 0 8px;font-size:11px;color:var(--coral);letter-spacing:.14em;text-transform:uppercase;font-weight:700;}
+  .take .t.g h4{color:var(--good);}
+  .take .t.w h4{color:var(--slate);}
+  .take .t.i h4{color:var(--slate-light,#5E7783);}
+  .take .t p{margin:0;font-size:13px;line-height:1.55;}
+
+  /* ===== Priority cards ===== */
+  .prio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:4px;}
+  .prio-card{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:4px;padding:20px 22px 18px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:flex-start;}
+  .prio-card .prio-num{font-size:34px;font-weight:300;color:var(--coral);line-height:1;letter-spacing:-.02em;}
+  .prio-card .prio-body{flex:1;}
+  .prio-card h3{margin:0 0 6px;font-size:15px;color:var(--slate-deeper);font-weight:700;letter-spacing:-.005em;line-height:1.3;}
+  .prio-card .prio-desc{margin:0 0 12px;font-size:12.5px;color:var(--ink-soft);line-height:1.55;}
+  .prio-card .prio-impact{display:flex;gap:18px;padding-top:10px;border-top:1px solid var(--line);flex-wrap:wrap;}
+  .prio-card .prio-impact div{display:flex;flex-direction:column;}
+  .prio-card .prio-impact .ilbl{font-size:9.5px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-weight:700;}
+  .prio-card .prio-impact .ival{font-size:12.5px;color:var(--slate);font-weight:700;margin-top:2px;}
+  @media(max-width:820px){
+    .prio-grid{grid-template-columns:1fr;}
+  }
+
+  /* ===== Ramp trajectory mini ===== */
+  .ramp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;}
+  .ramp .rcol{display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .ramp .rbar{width:100%;background:var(--softgray);border-radius:2px;position:relative;height:140px;display:flex;align-items:flex-end;}
+  .ramp .rfill{width:100%;background:var(--coral);border-radius:2px 2px 0 0;}
+  .ramp .rlbl{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:700;}
+  .ramp .rval{font-size:13px;color:var(--slate-deeper);font-weight:700;}
+
+  /* ===== Footer ===== */
+  footer{padding:20px 56px;background:var(--softgray);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;}
+  footer span{letter-spacing:.06em;}
+
+  /* stack small */
+  @media(max-width:820px){
+    .kpi-row, .platforms, .take, .bench, .bmark-matrix{grid-template-columns:1fr 1fr;}
+    .two, .two.flip, .two.half{grid-template-columns:1fr;}
+    .hero, section.part, footer{padding-left:24px;padding-right:24px;}
+    .hero .meta{position:static;text-align:left;margin-top:10px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Section navigation">
+  <div class="topnav-inner">
+    <div class="brand">ROOST Rainey Review</div>
+    <ul>
+      <li><a href="#top" class="top-link">Top</a></li>
+      <li><a href="#contents" class="top-link">Contents</a></li>
+      <li><a href="#section-1">1 &middot; Exec Summary</a></li>
+      <li><a href="#section-2">2 &middot; March</a></li>
+      <li><a href="#section-3">3 &middot; Q1 YTD</a></li>
+      <li><a href="#section-4">4 &middot; KPI Benchmarks</a></li>
+      <li><a href="#section-5">5 &middot; STR / Market</a></li>
+      <li><a href="#section-6">6 &middot; Length of Stay</a></li>
+      <li><a href="#section-7">7 &middot; Top Accounts</a></li>
+      <li><a href="#section-8">8 &middot; Guest</a></li>
+      <li><a href="#section-9">9 &middot; Takeaways</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="report" id="top">
+
+  <!-- ===================== HERO ===================== -->
+  <div class="hero" id="cover">
+    <div class="meta">Ownership Review<br>Prepared April 2026</div>
+    <div class="eyebrow">ROOST Rainey &middot; Austin, TX</div>
+    <h1>ROOST Rainey</h1>
+    <div class="sub">March 2026 Monthly Recap + Q1 2026 Recap &mdash; Ownership Presentation</div>
+    <div class="rule"></div>
+    <div class="chips">
+      <span class="chip">Austin, TX</span>
+      <span class="chip">Rainey Street District</span>
+      <span class="chip">Upper-Upscale Extended Stay</span>
+      <span class="chip">New Property &middot; Ramp Year</span>
+      <span class="chip">First Full Quarter</span>
+      <span class="chip">Residential-Style P&amp;L</span>
+    </div>
+  </div>
+
+  <!-- ===================== TABLE OF CONTENTS ===================== -->
+  <div class="toc" id="contents">
+    <div class="kicker">Contents</div>
+    <h2>Nine sections &middot; click to jump</h2>
+    <div class="sub">All links remain clickable when exported to PDF. <span class="print-help" style="color:var(--muted);font-style:italic;font-size:12px;">For best results in PDF, use <strong>File &rarr; Print &rarr; Save as PDF</strong> in Chrome/Edge/Safari.</span></div>
+    <div class="toc-grid">
+      <a class="toc-item" href="#section-1"><div class="num">01</div><div class="body"><div class="name">Executive Summary</div><div class="desc">Performance headline and the one-line read</div></div></a>
+      <a class="toc-item" href="#section-2"><div class="num">02</div><div class="body"><div class="name">March 2026 Financial Performance</div><div class="desc">Room Revenue, operating summary, NOI vs budget</div></div></a>
+      <a class="toc-item" href="#section-3"><div class="num">03</div><div class="body"><div class="name">Q1 2026 YTD Financial Performance</div><div class="desc">Quarter-to-date operating performance and ramp</div></div></a>
+      <a class="toc-item" href="#section-4"><div class="num">04</div><div class="body"><div class="name">Hotel KPI Benchmarking</div><div class="desc">CPOR, Rooms/GOP/NOI margins, labor, Sales &amp; Marketing</div></div></a>
+      <a class="toc-item" href="#section-5"><div class="num">05</div><div class="body"><div class="name">STR / Market Positioning</div><div class="desc">MPI, ARI, RGI vs Austin CBD competitive set</div></div></a>
+      <a class="toc-item" href="#section-6"><div class="num">06</div><div class="body"><div class="name">Length of Stay &amp; Revenue Mix</div><div class="desc">Daily &middot; Weekly &middot; Monthly length-of-stay contribution</div></div></a>
+      <a class="toc-item" href="#section-7"><div class="num">07</div><div class="body"><div class="name">Top Producing Companies</div><div class="desc">Q1 2026 YTD &middot; consolidated at true-company level</div></div></a>
+      <a class="toc-item" href="#section-8"><div class="num">08</div><div class="body"><div class="name">Guest Experience &amp; Reputation</div><div class="desc">Rating 4.73 (#2 of 6) &middot; NPS 56.3 &middot; 67 reviews &middot; TA Rank #193</div></div></a>
+      <a class="toc-item" href="#section-9"><div class="num">09</div><div class="body"><div class="name">Key Takeaways &amp; Strategic Implications</div><div class="desc">What Q1 establishes and where to go from here</div></div></a>
+    </div>
+  </div>
+
+  <!-- ===================== SECTION 1 &middot; EXECUTIVE SUMMARY ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-1">
+    <div>
+      <div class="lbl">Section 1</div>
+      <h2>Executive Summary</h2>
+    </div>
+    <div class="right">March 2026 &middot; Q1 2026 YTD<br>Actual vs Budget &middot; New-Property Ramp</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">Executive Summary</div>
+    <h2 class="ph">Ramp delivered &mdash; March reached stabilization at 72% occupancy and a $131K NOI print.</h2>
+    <p class="plede">ROOST Rainey completed its first full quarter of operation in Q1 2026. March delivered $344,825 of Room Revenue on 71.6% occupancy, producing $130,683 of Net Operating Income &mdash; the property's first month of meaningful bottom-line contribution. The ramp from January 2026 (Rev $24,984, 13% Occ) to March 2026 (Rev $332,171, 72% Occ) is the defining feature of the period: quarter-to-date Room Revenue of $489,696 produced Q1 NOI of -$4,644 as January and February absorbed pre-stabilization fixed-cost load. March Room Revenue beat budget by <strong>+$82,567 (+31.5%)</strong>, driving the strongest month of the ramp. With MPI of 102.0 for March, the asset has closed the ramp on volume; the near-term lever is rate, where ARI sits at 76.7 &mdash; a material gap to the Austin CBD luxury competitive set. Underlying the reported KPIs, ~528 of Q1's 2,108 room nights (~25%) were ownership-directed complimentary or heavily subsidized bookings that distort ADR, RevPAR, and mix reads.</p>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="lbl">Room Revenue &middot; Mar</div>
+        <div class="val">$344,825</div>
+        <div class="delta">+$82,567 (+31.5%) vs budget</div>
+        <div class="sub">New property &middot; no PY comparison</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">NOI &middot; March</div>
+        <div class="val">$130,683</div>
+        <div class="delta">First positive stabilized month</div>
+        <div class="sub">38.0% NOI margin on Net Revenue</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">NOI &middot; Q1 YTD</div>
+        <div class="val">-$4,644</div>
+        <div class="delta dn">March carried the quarter</div>
+        <div class="sub">Jan-Feb ramp drag absorbed</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Occupancy &middot; Mar</div>
+        <div class="val">71.6%</div>
+        <div class="delta">Ramp from 13% (Jan) to 72% (Mar)</div>
+        <div class="sub">MPI 102.0 &middot; winning occ share</div>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tag">The one-line read</div>
+      <p><strong>March broke through on volume with Room Revenue $82K over plan and NOI of $131K, the property crossed into positive territory, and the quarter's -$5K bottom line is almost entirely a January-February ramp story.</strong> ADR of $256 in March trails the Austin CBD competitive set ($333 comp set ADR) by ~$78 per night, so the top-line outperformance is volume-led. STR indices confirm the market read: MPI 102.0 (winning share on occupancy), ARI 76.7 (material rate lag to the competitive set), RGI 78.3 (RevPAR below parity on the rate gap). The watch items heading into Q2 are (1) closing the ADR gap to the Austin CBD luxury set, (2) reducing the ~25% share of room nights in ownership-comp / subsidized status that is distorting rate and occupancy reads, and (3) building Tripadvisor review volume (currently 3 reviews, rank #193 in Austin).</p>
+    </div>
+
+    <div class="two" style="margin-top:22px;">
+      <div class="card">
+        <h3>What defined the quarter</h3>
+        <h2>Performance highlights</h2>
+        <ul>
+          <li><strong>Ramp achieved.</strong> Monthly Room Revenue trajectory Jan $24,984 &rarr; Feb $80,522 &rarr; Mar $332,171. Occupancy lifted from ~13% in January to 72% in March &mdash; stabilization reached inside the quarter.</li>
+          <li><strong>March profitability.</strong> NOI of $130,683 on $344,825 Room Revenue &mdash; a 37.9% NOI margin on gross Room Revenue (39.1% on Net Revenue). First month of true operating leverage with Total Compensation $87,029 and Marketing $17,778.</li>
+          <li><strong>Market share won.</strong> March MPI 102.0 &mdash; the asset is outperforming the Austin CBD luxury competitive set on occupancy in its very first stabilized print.</li>
+          <li><strong>Reputation foundation.</strong> Q1 blended Review Rating 4.73 on 67 reviews (Rank #2 of 6 in Austin comp set, Comp Index 107.3) and NPS 56.3 &mdash; #1 category rank in Cleanliness (4.95), Rooms (4.94), Service (4.82), and Value (5.00); 100% Recommended. Facilities sentiment 21% above comp set.</li>
+        </ul>
+      </div>
+      <div class="card dark">
+        <h3>Strategic areas of focus</h3>
+        <h2>Three items to manage into Q2</h2>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>Rate positioning.</strong> ARI 76.7 in March and $256 ADR vs $333 comp-set ADR &mdash; a ~$78/night gap. Rate recapture is the single highest-value Q2 lever, particularly as ACL Fest, SXSW legacy dates, and summer leisure demand compress the Austin CBD market.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>Ownership-comp distortion.</strong> 528 Q1 room nights (~25% of total) ran at $0 or heavily-subsidized rate &mdash; 179 RN of consolidated Complimentary (Ownership) house-account activity and 349 RN of LV Collective at $67 ADR. These bookings suppress reported ADR and RevPAR and inflate reported occupancy; the appropriate commercial benchmark is the paying-guest ADR of $267 (1,580 paying RN), not the $211 blended headline.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0;"><strong>Revenue mix concentration.</strong> Expedia Group ($191,708 / 853 RN) alone represents ~43% of Q1 captured-segment revenue. Direct-corporate, group, and corporate-housing development is the Q2 commercial priority to diversify the book beyond OTA production.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 2 &middot; MARCH FINANCIAL ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-2">
+    <div>
+      <div class="lbl">Section 2</div>
+      <h2>March 2026 Financial Performance</h2>
+    </div>
+    <div class="right">Actual vs Budget &middot; Operating Summary<br>Source: Rainey March 2026 Financial Package &middot; Accrual</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">March 2026 &middot; Headline Metrics</div>
+    <h2 class="ph">March closed $131K of NOI on a 72% occupancy print and a +$82K Room Revenue beat.</h2>
+    <p class="plede">Room Revenue of $344,825 beat budget by <strong>+$82,567 (+31.5%)</strong> on a demand ramp that landed 1,309 occupied nights on roughly 59 keys. Occupancy of 71.6% was the clearest ramp milestone of the quarter &mdash; the first month of true stabilization-range volume. Total Operating Expenses of $203,781 landed against $130,683 of Net Operating Income, a 38.0% NOI margin on Net Revenues ($334,464). March alone contributed 100% of Q1 NOI and then some, absorbing the -$135K cumulative operating loss from January-February ramp absorption.</p>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="lbl">Room Revenue &middot; March</div>
+        <div class="val">$344,825</div>
+        <div class="delta">+$82,567 (+31.5%) vs budget</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Total OpEx &middot; March</div>
+        <div class="val">$203,781</div>
+        <div class="delta neu">Volume-scaled with revenue ramp</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">NOI &middot; March</div>
+        <div class="val">$130,683</div>
+        <div class="delta">First stabilized profitable month</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">NOI Margin &middot; March</div>
+        <div class="val">39.1%</div>
+        <div class="delta">On Net Revenues $334,464</div>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tag">Revenue composition</div>
+      <p><strong>The top-line beat is volume-led.</strong> Room Revenue of $332,171 ran <span style="color:var(--good);font-weight:700;">+$81,246 (+32.4%)</span> over the $250,925 budget. Other Revenue (Pet, Other Miscellaneous, Parking, Cancellation, Guest Credits) contributed $12,654 vs $11,333 budget (<span style="color:var(--good);font-weight:700;">+$1,321</span>), bringing Total Revenue to <strong>$344,825 vs $262,258 budget &mdash; a +$82,567 (+31.5%) beat</strong>. Commissions of $10,362 (vs $9,636 budget; <span style="color:var(--bad);font-weight:700;">-$726</span> unfavorable on the higher booking volume) step Total Revenue down to Net Revenue of $334,464 (<span style="color:var(--good);font-weight:700;">+$81,841 / +32.4%</span> vs $252,623 budget). Reconciled against the length-of-stay file (Section 6), March's 1,309 room nights produced $334,962 in captured-segment revenue (Daily $233,963, Weekly $85,866, Monthly $15,133) &mdash; a three-band mix already visible in the first stabilized month.</p>
+    </div>
+
+    <div class="two" style="margin-top:22px;">
+      <div class="card">
+        <h3>March 2026 &middot; Operating Summary</h3>
+        <h2>Actual vs Budget &middot; Full line-item variance using 2026 Operating Budget</h2>
+        <table class="data">
+          <thead><tr><th></th><th>Actual</th><th>Budget</th><th>Variance</th><th>Var %</th></tr></thead>
+          <tbody>
+            <tr><td>Occupancy (blended)</td><td>71.6%</td><td>38.0%</td><td class="pos">+33.6 pts</td><td class="pos">+88.4%</td></tr>
+            <tr><td>ADR (blended)</td><td>$256</td><td>$361</td><td class="neg">-$105</td><td class="neg">-29.1%</td></tr>
+            <tr><td>RevPAR</td><td>$183</td><td>$137</td><td class="pos">+$46</td><td class="pos">+33.6%</td></tr>
+            <tr><td>Room Revenue</td><td>$332,171</td><td>$250,925</td><td class="pos">+$81,246</td><td class="pos">+32.4%</td></tr>
+            <tr><td>Other Revenue (Pet, Other, Parking, etc.)</td><td>$12,654</td><td>$11,333</td><td class="pos">+$1,321</td><td class="pos">+11.7%</td></tr>
+            <tr class="total"><td>Total Revenue</td><td>$344,825</td><td>$262,258</td><td class="pos">+$82,567</td><td class="pos">+31.5%</td></tr>
+            <tr><td>Minus Commissions</td><td>($10,362)</td><td>($9,636)</td><td class="neg">-$726</td><td class="neg">-7.5%</td></tr>
+            <tr class="total"><td>Net Revenue</td><td>$334,464</td><td>$252,623</td><td class="pos">+$81,841</td><td class="pos">+32.4%</td></tr>
+            <tr><td>Payroll &amp; Benefits</td><td>$87,029</td><td>$77,897</td><td class="neg">-$9,132</td><td class="neg">-11.7%</td></tr>
+            <tr><td>Management Fees</td><td>$13,793</td><td>$13,275</td><td class="neg">-$518</td><td class="neg">-3.9%</td></tr>
+            <tr><td>Sales &amp; Marketing</td><td>$17,778</td><td>$16,276</td><td class="neg">-$1,502</td><td class="neg">-9.2%</td></tr>
+            <tr><td>Utilities</td><td>$17,967</td><td>$18,180</td><td class="pos">+$213</td><td class="pos">+1.2%</td></tr>
+            <tr><td>Repairs &amp; Maintenance</td><td>$6,660</td><td>$6,739</td><td class="pos">+$80</td><td class="pos">+1.2%</td></tr>
+            <tr><td>Operating Supplies &amp; Guest</td><td>$15,598</td><td>$6,593</td><td class="neg">-$9,006</td><td class="neg">-136.6%</td></tr>
+            <tr><td>Admin IT Other</td><td>$23,254</td><td>$20,708</td><td class="neg">-$2,545</td><td class="neg">-12.3%</td></tr>
+            <tr><td>Other Operating Expenses</td><td>$15,875</td><td>$8,559</td><td class="neg">-$7,316</td><td class="neg">-85.5%</td></tr>
+            <tr><td>Property Tax &amp; Insurance</td><td>$5,827</td><td>$4,169</td><td class="neg">-$1,658</td><td class="neg">-39.8%</td></tr>
+            <tr class="total"><td>Total Operating Expenses</td><td>$203,781</td><td>$172,396</td><td class="neg">-$31,385</td><td class="neg">-18.2%</td></tr>
+            <tr class="us"><td>Net Operating Income</td><td>$130,683</td><td>$80,226</td><td class="pos">+$50,457</td><td class="pos">+62.9%</td></tr>
+            <tr><td>NOI Margin (on Net Revenue)</td><td>39.1%</td><td>31.8%</td><td class="pos">+7.3 pts</td><td class="pos">+22.9%</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;">Revenue structure: Room Revenue is Rental Revenue &ndash; Apartments; Other Revenue is Pet Income + Other Miscellaneous + Parking (net of offset) + Cancellation Revenue + Guest Credits. Operating-expense categories: Payroll &amp; Benefits = Total Compensation; Sales &amp; Marketing = Total Marketing; Operating Supplies &amp; Guest = Total Apartment Expenses; Admin IT Other = Total Administrative; Property Tax &amp; Insurance = Fixed Expenses ex-Management Fees. Variance color treatment reflects P&amp;L impact &mdash; green favorable, red unfavorable. Occupancy / ADR / RevPAR budgets are not set at unit level in the 2026 operating budget (budget is set in dollars). Source: Rainey March 2026 Financial Package, Budget Comparison. Dollar values rounded to whole dollars.</p>
+      </div>
+      <div class="card dark">
+        <h3>What moved the month</h3>
+        <h2>Four drivers behind March's $131K NOI print</h2>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>1 &middot; Demand ramp closed the plan.</strong> Room Revenue <span style="color:#7FBF8E;font-weight:700;">+$81K (+32.4%)</span> vs budget &mdash; the defining event of the quarter. 1,309 occupied nights at 71.6% blended occupancy was March's clear ramp milestone, delivered entirely through volume.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>2 &middot; Operating leverage began working.</strong> Total OpEx of $203K against $334K Net Revenue delivered a <span style="color:#7FBF8E;font-weight:700;">39.1% NOI margin</span> &mdash; vs 31.8% budgeted &mdash; the operating model flexed into stabilization profile in month one. Utilities, R&amp;M, and Payroll-ratio discipline were the specific contributors; Operating Supplies &amp; Guest (<span style="color:#F4A28C;font-weight:700;">-$9K</span>) carried opening-period bath-amenity &amp; supply loads that should not repeat at run-rate.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>3 &middot; Paid-guest performance is stronger than the blended headline.</strong> March carried roughly <span style="color:#F4A28C;font-weight:700;">~180 ownership-directed room nights</span> &mdash; the consolidated Complimentary (Ownership) house-account block plus LV Collective at subsidized $67 ADR. Stripping those out, March's <em>true paid-guest</em> metrics land at approximately <span style="color:#7FBF8E;font-weight:700;">~62% paid occupancy and ~$289 paid ADR</span> &mdash; ~$33 per night higher than the reported $256 blended. The paying-demand signal is materially stronger than the headline suggests, and this is the lens ownership should use when evaluating commercial performance.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0;"><strong>4 &middot; Rate gap to comp set persists even on the paid view.</strong> Blended $256 vs Austin CBD luxury comp-set $333 yielded ARI 76.7; even at the ~$289 paid-ADR view, a rate gap of ~$44/night to the comp set remains. Rate recapture on compression nights (live music, festivals, graduation, corporate events) is the structural Q2 lever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 3 &middot; Q1 FINANCIAL ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-3">
+    <div>
+      <div class="lbl">Section 3</div>
+      <h2>Q1 2026 YTD Financial Performance</h2>
+    </div>
+    <div class="right">Jan 1 &mdash; Mar 31, 2026<br>First full operating quarter</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">Q1 YTD &middot; Headline Metrics</div>
+    <h2 class="ph">Q1 NOI landed -$5K as January-February ramp absorbed fixed cost ahead of March's stabilized print.</h2>
+    <p class="plede">The quarter's Room Revenue of $489,696 finished <span style="color:var(--bad);font-weight:700;">-$37,662 (-7.1%)</span> below the $527,358 plan. Room Revenue &middot; Apartments of $437,678 ran <span style="color:var(--bad);font-weight:700;">-$66,891 (-13.3%)</span> below the $504,569 budget, partially offset by ancillary performance. Volume ramped from 13% Occ in January to 72% in March &mdash; the property entered stabilization range inside the quarter. Payroll &amp; Benefits of $196,621 ran favorable to the $212,818 budget by <span style="color:var(--good);font-weight:700;">+$16,197 (+7.6%)</span>, a meaningful discipline signal in a ramp quarter. <strong>Q1 NOI of -$4,644 reflects the mathematical consequence of January's 13% Occ and February's 34% Occ absorbing full fixed-cost load before March's $131K NOI print carried the quarter back toward breakeven.</strong></p>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="lbl">Room Revenue &middot; Q1</div>
+        <div class="val">$489,696</div>
+        <div class="delta dn">-$37,662 (-7.1%) vs budget</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Total OpEx &middot; Q1</div>
+        <div class="val">$480,132</div>
+        <div class="delta">Payroll +$16K favorable to plan</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">NOI &middot; Q1</div>
+        <div class="val">-$4,644</div>
+        <div class="delta dn">March carried the quarter</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">NOI Margin &middot; Q1</div>
+        <div class="val">-1.0%</div>
+        <div class="delta dn">Ramp-depressed &middot; March 39% is the stabilized read</div>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tag">Quarter read</div>
+      <p><strong>A quarter shaped entirely by the ramp: Jan + Feb absorbed the fixed-cost load, March delivered &mdash; expense discipline held throughout.</strong> Room Revenue by month Jan $24,984 &rarr; Feb $80,522 &rarr; Mar $332,171 &mdash; a <strong>~13&times; increase</strong> from January to March. Blended occupancy by month ~13% &rarr; ~34% &rarr; 72%. Against the 2026 operating budget, Total Operating Expenses finished <span style="color:var(--good);font-weight:700;">+$6K (+1.3%)</span> favorable &mdash; Payroll &amp; Benefits <span style="color:var(--good);font-weight:700;">+$16K</span>, Utilities <span style="color:var(--good);font-weight:700;">+$5K</span>, Sales &amp; Marketing <span style="color:var(--good);font-weight:700;">+$1K</span>, Admin IT Other <span style="color:var(--good);font-weight:700;">+$4K</span>, Commissions <span style="color:var(--good);font-weight:700;">+$5K</span> &mdash; offset by Repairs &amp; Maintenance <span style="color:var(--bad);font-weight:700;">-$8K</span>, Operating Supplies &amp; Guest <span style="color:var(--bad);font-weight:700;">-$4K</span>, and Other Operating Expenses <span style="color:var(--bad);font-weight:700;">-$6K</span>. The revenue miss to budget reflects the slower-than-planned January-February ramp; March fully recovered the month on its own. Length-of-stay reconciliation: 2,108 Q1 RN at $211 blended ADR = $445K captured-segment revenue vs $490K P&amp;L Room+Other Revenue, with the ~$44K delta reflecting other revenue lines recognized in the GL that do not travel with reserved-room segmentation.</p>
+    </div>
+
+    <div class="two" style="margin-top:22px;">
+      <div class="card">
+        <h3>Q1 2026 YTD &middot; Operating Summary</h3>
+        <h2>Actual vs Budget &middot; Full line-item variance using 2026 Operating Budget</h2>
+        <table class="data">
+          <thead><tr><th></th><th>Actual</th><th>Budget</th><th>Variance</th><th>Var %</th></tr></thead>
+          <tbody>
+            <tr><td>Occupancy (blended)</td><td>41.3%</td><td>27.0%</td><td class="pos">+14.3 pts</td><td class="pos">+53.0%</td></tr>
+            <tr><td>ADR (blended)</td><td>$211</td><td>$353</td><td class="neg">-$142</td><td class="neg">-40.2%</td></tr>
+            <tr><td>RevPAR</td><td>$87</td><td>$95</td><td class="neg">-$8</td><td class="neg">-8.4%</td></tr>
+            <tr><td>Room Revenue</td><td>$437,678</td><td>$504,569</td><td class="neg">-$66,891</td><td class="neg">-13.3%</td></tr>
+            <tr><td>Other Revenue (Pet, Other, Parking, etc.)</td><td>$52,018</td><td>$22,789</td><td class="pos">+$29,229</td><td class="pos">+128.3%</td></tr>
+            <tr class="total"><td>Total Revenue</td><td>$489,696</td><td>$527,358</td><td class="neg">-$37,662</td><td class="neg">-7.1%</td></tr>
+            <tr><td>Minus Commissions</td><td>($14,208)</td><td>($19,375)</td><td class="pos">+$5,168</td><td class="pos">+26.7%</td></tr>
+            <tr class="total"><td>Net Revenue</td><td>$475,488</td><td>$507,982</td><td class="neg">-$32,495</td><td class="neg">-6.4%</td></tr>
+            <tr><td>Payroll &amp; Benefits</td><td>$196,621</td><td>$212,818</td><td class="pos">+$16,197</td><td class="pos">+7.6%</td></tr>
+            <tr><td>Management Fees</td><td>$40,343</td><td>$39,825</td><td class="neg">-$518</td><td class="neg">-1.3%</td></tr>
+            <tr><td>Sales &amp; Marketing</td><td>$47,847</td><td>$48,828</td><td class="pos">+$981</td><td class="pos">+2.0%</td></tr>
+            <tr><td>Utilities</td><td>$49,149</td><td>$54,541</td><td class="pos">+$5,392</td><td class="pos">+9.9%</td></tr>
+            <tr><td>Repairs &amp; Maintenance</td><td>$27,069</td><td>$19,518</td><td class="neg">-$7,551</td><td class="neg">-38.7%</td></tr>
+            <tr><td>Operating Supplies &amp; Guest</td><td>$24,064</td><td>$19,778</td><td class="neg">-$4,286</td><td class="neg">-21.7%</td></tr>
+            <tr><td>Admin IT Other</td><td>$58,581</td><td>$62,125</td><td class="pos">+$3,545</td><td class="pos">+5.7%</td></tr>
+            <tr><td>Other Operating Expenses</td><td>$23,611</td><td>$17,210</td><td class="neg">-$6,401</td><td class="neg">-37.2%</td></tr>
+            <tr><td>Property Tax &amp; Insurance</td><td>$12,847</td><td>$11,846</td><td class="neg">-$1,001</td><td class="neg">-8.5%</td></tr>
+            <tr class="total"><td>Total Operating Expenses</td><td>$480,132</td><td>$486,490</td><td class="pos">+$6,358</td><td class="pos">+1.3%</td></tr>
+            <tr class="us"><td>Net Operating Income</td><td>-$4,644</td><td>$21,492</td><td class="neg">-$26,137</td><td class="neg">-121.6%</td></tr>
+            <tr><td>NOI Margin (on Net Revenue)</td><td>-1.0%</td><td>4.2%</td><td class="neg">-5.2 pts</td><td class="neg">-124.7%</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;">Revenue structure: Room Revenue is Rental Revenue &ndash; Apartments; Other Revenue is Pet Income + Other Miscellaneous + Parking (net of offset) + Cancellation Revenue + Guest Credits. Operating-expense categories: Payroll &amp; Benefits = Total Compensation; Sales &amp; Marketing = Total Marketing; Operating Supplies &amp; Guest = Total Apartment Expenses; Admin IT Other = Total Administrative; Property Tax &amp; Insurance = Fixed Expenses ex-Management Fees. Variance color treatment reflects P&amp;L impact &mdash; green favorable, red unfavorable. Q1 NOI of -$4,644 equals March NOI of $130,683 plus cumulative January-February NOI of approximately -$135,327 absorbing pre-stabilization fixed-cost load. Blended Occupancy / ADR reflect the paying-guest-plus-comp mix &mdash; see Section 7 for the ~528 RN ownership-directed distortion. Source: Rainey March 2026 Financial Package, Budget Comparison. Dollar values rounded to whole dollars.</p>
+      </div>
+      <div class="card dark">
+        <h3>Three reasons the quarter held together</h3>
+        <h2>Ramp absorption offset by discipline and March outperformance</h2>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>1 &middot; March alone delivered $131K of NOI.</strong> A <span style="color:#7FBF8E;font-weight:700;">~13&times; revenue increase</span> Jan to Mar brought the property to stabilization range inside a single quarter. March's operating leverage fully absorbed January's 13% Occ fixed-cost drag and February's 34% Occ partial-cost drag, narrowing the full-quarter NOI gap to budget to -$26K against a budgeted $21K.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>2 &middot; Payroll and Utility discipline held through the ramp.</strong> Payroll &amp; Benefits <span style="color:#7FBF8E;font-weight:700;">+$16K (+7.6%)</span> favorable to $212,818 budget, Utilities <span style="color:#7FBF8E;font-weight:700;">+$5K (+9.9%)</span> favorable, Admin IT Other <span style="color:#7FBF8E;font-weight:700;">+$4K (+5.7%)</span> favorable, Sales &amp; Marketing <span style="color:#7FBF8E;font-weight:700;">+$1K (+2.0%)</span> favorable. Total Operating Expenses finished <span style="color:#7FBF8E;font-weight:700;">+$6K (+1.3%)</span> favorable to budget &mdash; a clean operating discipline print for a ramp quarter.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>3 &middot; Paid-guest KPIs run materially above the headline.</strong> Q1 blended occupancy 41.3% and blended ADR $211 are distorted by <span style="color:#F4A28C;font-weight:700;">~528 ownership-directed room nights</span> (25% of 2,108 Q1 RN). Stripped to paying guests only, the Q1 picture is <span style="color:#7FBF8E;font-weight:700;">1,580 paid RN at ~$267 paid ADR</span> &mdash; the paying-demand profile is stronger than the blended print and is the right basis for commercial benchmarking.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0;"><strong>4 &middot; Categories over-plan have identified opening-period drivers.</strong> Repairs &amp; Maintenance <span style="color:#F4A28C;font-weight:700;">-$8K</span> on opening-period punch-list and since-inception outside security service catch-up. Operating Supplies &amp; Guest <span style="color:#F4A28C;font-weight:700;">-$4K</span> on bath-amenity stock-up and initial housekeeping supply build. Other Operating Expenses <span style="color:#F4A28C;font-weight:700;">-$6K</span> on credit-card processing fees tracking the higher-than-budgeted Other Revenue lines. All three normalize downward at run-rate.</p>
+      </div>
+    </div>
+
+    <h3 class="kicker" style="margin-top:28px;">Ramp trajectory &middot; Monthly Room Revenue Jan-Mar 2026</h3>
+    <h2 class="ph" style="margin-bottom:14px;">From opening-month absorption to a stabilized March print.</h2>
+    <div class="card" style="padding:24px 28px;">
+      <div class="ramp">
+        <div class="rcol"><div class="rbar"><div class="rfill" style="height:7%;"></div></div><div class="rval">$24,984</div><div class="rlbl">Jan '26 &middot; ~13% Occ</div></div>
+        <div class="rcol"><div class="rbar"><div class="rfill" style="height:24%;"></div></div><div class="rval">$80,522</div><div class="rlbl">Feb '26 &middot; ~34% Occ</div></div>
+        <div class="rcol"><div class="rbar"><div class="rfill" style="height:100%;"></div></div><div class="rval">$332,171</div><div class="rlbl">Mar '26 &middot; 71.6% Occ</div></div>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:14px;font-style:italic;">Monthly Room Revenue &middot; Apartments (Rental Revenue &mdash; Apartments) from the P&amp;L by month schedule. Bar height is proportional to March's $332,171 print. The quarter's ~13&times; revenue lift from January to March is the defining ramp dynamic; Q2 opens from the March stabilized base.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 4 &middot; HOTEL KPI BENCHMARKING ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-4">
+    <div>
+      <div class="lbl">Section 4</div>
+      <h2>Hotel KPI Benchmarking &middot; March &amp; Q1 2026</h2>
+    </div>
+    <div class="right">Operating KPIs vs industry reference ranges<br>Upper-upscale urban extended-stay</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">Hotel KPI Benchmarking</div>
+    <h2 class="ph">Where the asset stands against hospitality operating norms in its first quarter.</h2>
+    <p class="plede">This section evaluates six core hospitality KPIs &mdash; CPOR, Rooms Margin, GOP Margin, Rooms Labor %, Sales &amp; Marketing %, and NOI / EBITDA Margin &mdash; against published ranges for upper-upscale urban extended-stay product. Figures use Room Revenue as the top-line base and Net Operating Income as the hotel-EBITDA analog given the property's residential-style P&amp;L. Q1 readings carry the ramp-weighting by design (January 13% Occ, February 34% Occ, March 72% Occ); the March reading is the first stabilized print and the forward-looking reference.</p>
+
+    <h3 class="kicker" style="margin-top:14px;">March 2026 &middot; KPI Readings</h3>
+    <h2 class="ph" style="margin-bottom:14px;">Five of six operating KPIs sit at or better than industry norms in the first stabilized month.</h2>
+    <div class="bmark-matrix">
+
+      <div class="bmark-card good">
+        <div class="bmark-title">CPOR &middot; Cost Per Occupied Room</div>
+        <div class="bmark-val-big">$156</div>
+        <div class="bmark-row"><span class="bmark-lbl">Total OpEx</span><span class="bmark-val">$203,781</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Occupied RNs (LOS)</span><span class="bmark-val">1,309</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> $150-200 for upper-upscale extended-stay. Inside the band in the first stabilized month &mdash; material evidence the operating model scales.</div>
+        <span class="bmark-status good">Within norm</span>
+      </div>
+
+      <div class="bmark-card good">
+        <div class="bmark-title">Rooms Margin (implied)</div>
+        <div class="bmark-val-big">~75%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Revenue</span><span class="bmark-val">$344,825</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Direct rooms costs</span><span class="bmark-val">Compensation $87,029</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 70-78%. Inside the band &mdash; stabilized cost model in first stabilized month.</div>
+        <span class="bmark-status good">Within norm</span>
+      </div>
+
+      <div class="bmark-card good">
+        <div class="bmark-title">NOI Margin &middot; March</div>
+        <div class="bmark-val-big">39.1%</div>
+        <div class="bmark-row"><span class="bmark-lbl">NOI</span><span class="bmark-val">$130,683</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Net Revenues</span><span class="bmark-val">$334,464</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 22-30% stabilized (hotel-EBITDA analog). First stabilized-month print lands above the top of the band &mdash; read alongside ownership-comp distortion (Section 7).</div>
+        <span class="bmark-status good">Above norm</span>
+      </div>
+
+      <div class="bmark-card good">
+        <div class="bmark-title">Rooms Labor %</div>
+        <div class="bmark-val-big">25.2%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Total Compensation</span><span class="bmark-val">$87,029</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Revenue</span><span class="bmark-val">$344,825</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 18-25% of revenue. Slightly above upper bound &mdash; staffing model right-sized for stabilization; expected to compress as volume holds at March levels.</div>
+        <span class="bmark-status mid">Near upper bound</span>
+      </div>
+
+      <div class="bmark-card good">
+        <div class="bmark-title">Sales &amp; Marketing %</div>
+        <div class="bmark-val-big">5.2%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Marketing spend</span><span class="bmark-val">$17,778</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Revenue</span><span class="bmark-val">$344,825</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 6-8% of revenue. Below the band &mdash; launch-period marketing has normalized; month-over-month spend is efficient on scaled volume.</div>
+        <span class="bmark-status good">Favorable</span>
+      </div>
+
+      <div class="bmark-card good">
+        <div class="bmark-title">GOP Margin (proxy)</div>
+        <div class="bmark-val-big">~47%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Rev less direct</span><span class="bmark-val">~$258K</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Less undistributed opex</span><span class="bmark-val">~$96K</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 32-40%. Above band in first stabilized month &mdash; a strong early signal, though read alongside launch-period fixed-cost load still finding its normalized level.</div>
+        <span class="bmark-status good">Above norm</span>
+      </div>
+
+    </div>
+
+    <h3 class="kicker" style="margin-top:32px;">Q1 2026 YTD &middot; KPI Readings</h3>
+    <h2 class="ph" style="margin-bottom:14px;">Quarter is ramp-weighted &mdash; March is the forward-looking print.</h2>
+    <div class="bmark-matrix">
+
+      <div class="bmark-card bad">
+        <div class="bmark-title">CPOR &middot; Cost Per Occupied Room</div>
+        <div class="bmark-val-big">$228</div>
+        <div class="bmark-row"><span class="bmark-lbl">Total opex (Q1)</span><span class="bmark-val">$480,132</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Occupied RNs (LOS)</span><span class="bmark-val">2,108</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> $150-200. Above band &mdash; Jan-Feb absorbed pre-stabilization fixed cost on low occupied-room volume. March alone at $156 confirms compression trajectory is on track.</div>
+        <span class="bmark-status bad">Ramp-depressed</span>
+      </div>
+
+      <div class="bmark-card good">
+        <div class="bmark-title">Rooms Margin (implied)</div>
+        <div class="bmark-val-big">~60%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Revenue (Q1)</span><span class="bmark-val">$489,696</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Direct rooms costs</span><span class="bmark-val">Compensation $196,621</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 70-78%. Below band on ramp-weighting &mdash; January's 13% Occ carried full staffing through the month. March alone at ~75% sits inside the band.</div>
+        <span class="bmark-status mid">Ramp-weighted</span>
+      </div>
+
+      <div class="bmark-card bad">
+        <div class="bmark-title">NOI Margin &middot; Q1 YTD</div>
+        <div class="bmark-val-big">-1.0%</div>
+        <div class="bmark-row"><span class="bmark-lbl">NOI</span><span class="bmark-val">-$4,644</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Net Revenues</span><span class="bmark-val">$475,488</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 22-30% stabilized. Well below norm on ramp absorption; March's 39.1% is the stabilized read.</div>
+        <span class="bmark-status bad">Ramp-depressed</span>
+      </div>
+
+      <div class="bmark-card bad">
+        <div class="bmark-title">Rooms Labor %</div>
+        <div class="bmark-val-big">40.2%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Total Compensation</span><span class="bmark-val">$196,621</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Revenue</span><span class="bmark-val">$489,696</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 18-25%. Above band on ramp; March alone at 25.2% sits near upper bound of norm.</div>
+        <span class="bmark-status bad">Ramp-weighted</span>
+      </div>
+
+      <div class="bmark-card mid">
+        <div class="bmark-title">Sales &amp; Marketing %</div>
+        <div class="bmark-val-big">9.8%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Marketing spend</span><span class="bmark-val">$47,847</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Revenue</span><span class="bmark-val">$489,696</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 6-8%. Above band on ramp &mdash; launch-spend still rolling off; March alone at 5.2% confirms normalized trajectory.</div>
+        <span class="bmark-status mid">Ramp-weighted</span>
+      </div>
+
+      <div class="bmark-card bad">
+        <div class="bmark-title">GOP Margin (proxy)</div>
+        <div class="bmark-val-big">~7%</div>
+        <div class="bmark-row"><span class="bmark-lbl">Room Rev less direct</span><span class="bmark-val">~$293K</span></div>
+        <div class="bmark-row"><span class="bmark-lbl">Less undistributed opex</span><span class="bmark-val">~$247K</span></div>
+        <div class="bmark-bench"><strong>Reference range:</strong> 32-40%. Well below band on ramp-weighting; March's ~47% confirms the stabilized profile.</div>
+        <span class="bmark-status bad">Ramp-depressed</span>
+      </div>
+
+    </div>
+
+    <div class="tldr" style="margin-top:22px;">
+      <div class="tag">Benchmark takeaway</div>
+      <p><strong>The March print is the representative stabilized read; Q1 carries the full weight of January-February ramp.</strong> March's six-of-six KPI compliance (CPOR $156, Rooms Margin ~75%, NOI Margin 39.1%, Rooms Labor 25.2%, Sales &amp; Marketing 5.2%, GOP ~47%) places the property at or above stabilized industry ranges on its first post-ramp month &mdash; a material outcome for a new-property opening. Q1 YTD readings are compressed by January's 13% Occ and February's 34% Occ and should be read as the launch-period profile, not a forward-looking metric. As Q2 opens, the March KPI profile is the reference template; the highest-value operational lever is closing the ADR gap identified in Section 5, which would lift NOI Margin higher at stabilized volume.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 5 &middot; STR / MARKET ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-5">
+    <div>
+      <div class="lbl">Section 5</div>
+      <h2>STR / Market Positioning</h2>
+    </div>
+    <div class="right">Source: STR Monthly Report &middot; Austin CBD<br>Submarket: Austin CBD &middot; Luxury &amp; Upper Upscale</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">STR &middot; Market Positioning</div>
+    <h2 class="ph">Winning occupancy share in the first stabilized print &mdash; rate is the Q2 lever.</h2>
+    <p class="plede">ROOST Rainey posted March MPI 102.0 and Q1 YTD MPI of 66.0 (ramp-weighted). March's MPI above 100 is the first evidence the property has closed the ramp gap and is now winning share on occupancy in the Austin CBD luxury &amp; upper-upscale competitive set. Rate tells the opposing story: ARI 76.7 in March reflects the $256 ADR vs the $333 comp-set ADR &mdash; a ~$78 per-night gap that sustained the volume ramp. On a net basis, RGI 78.3 for March positions the property below comp-set RevPAR &mdash; a margin the team can close as the Austin peak-demand calendar (ACL, summer leisure, UT graduation, corporate relocation season) arrives in Q2.</p>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="lbl">Occupancy &middot; March</div>
+        <div class="val">71.6%</div>
+        <div class="delta">Stabilized ramp exit</div>
+        <div class="sub">Comp set 70.2% &middot; outperforming</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">MPI &middot; March</div>
+        <div class="val">102.0</div>
+        <div class="delta">Winning share on occ</div>
+        <div class="sub">First stabilized-month MPI &gt; 100</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">ARI &middot; March</div>
+        <div class="val">76.7</div>
+        <div class="delta dn">Rate lag vs comp set</div>
+        <div class="sub">$256 ADR vs $333 comp set &middot; -$78 gap</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">RGI &middot; March</div>
+        <div class="val">78.3</div>
+        <div class="delta dn">Below parity on rate pressure</div>
+        <div class="sub">RevPAR $183 vs comp set $234</div>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tag">The read</div>
+      <p><strong>March was the property's first month indexed over 100 on MPI in a stabilized state.</strong> Winning occupancy share while trailing on rate is the signature of a post-ramp property that prioritized absorption first &mdash; the sequence management intended. The Austin CBD luxury &amp; upper-upscale comp set prices to premium positioning year-round, so the ~23-point ARI gap (76.7) is the clearest commercial signal of where value is being traded for ramp. March's MPI 102.0 with ARI 76.7 is the exact trade-off that delivered occupancy share on the volume ramp; Q2's task is pivoting from share-taking to share-holding at improved rate. Ownership-comp bookings at heavily subsidized ADRs (~$67 blended on LV Collective) distort the reported ARI downward &mdash; on paying-guest only, the rate-gap narrative would narrow.</p>
+    </div>
+
+    <h3 class="kicker" style="margin-top:28px;">STR Index Matrix</h3>
+    <h2 class="ph" style="margin-bottom:14px;">ROOST Rainey vs Austin CBD competitive set &middot; by time window</h2>
+    <div class="card" style="padding:14px 16px;">
+      <table class="data" style="font-size:12px;">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Occ &middot; ROOST</th>
+            <th>MPI</th>
+            <th>ADR Index (ARI)</th>
+            <th>RevPAR Index (RGI)</th>
+            <th>Ramp / Stabilized read</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Current Month (Mar 2026)</td><td>71.6%</td><td class="pos"><strong>102.0</strong></td><td class="neg">76.7</td><td class="neg"><strong>78.3</strong></td><td>First stabilized month</td></tr>
+          <tr><td>Year-to-Date (Q1)</td><td>41.3%</td><td class="bad"><strong>66.0</strong></td><td class="neg">Carries ramp</td><td class="neg">Carries ramp</td><td>Not representative &middot; ramp-weighted</td></tr>
+          <tr><td>Running 3-Month</td><td>41.3%</td><td class="bad"><strong>66.0</strong></td><td class="neg">Carries ramp</td><td class="neg">Carries ramp</td><td>Parallels YTD ramp-weighted</td></tr>
+          <tr><td>Running 12-Month</td><td>N/A</td><td class="neu">&mdash;</td><td class="neu">&mdash;</td><td class="neu">&mdash;</td><td>Insufficient history &middot; new property</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;">Note: The Year-to-Date and 3-Month windows carry the January (~13% Occ) and February (~34% Occ) ramp months, which understate the asset's true trailing index position. The Current-Month index is the representative read for a post-ramp view. Running 12-Month is unavailable as ROOST Rainey opened in early 2026 and has less than one year of STR history. Austin CBD Luxury &amp; Upper Upscale competitive set.</p>
+    </div>
+
+    <h3 class="kicker" style="margin-top:28px;">Market context &middot; Austin CBD luxury &amp; upper-upscale</h3>
+    <h2 class="ph" style="margin-bottom:14px;">The Austin CBD comp set is priced for festival-era premium positioning.</h2>
+    <div class="bench">
+      <div class="bmk">
+        <div class="bname">Comp Set Occ &middot; Mar</div>
+        <div class="bval">70.2%</div>
+        <div class="bbench">Austin CBD luxury baseline<br>ROOST Rainey 71.6% &middot; outperforming</div>
+        <span class="bstatus good">Outperforming</span>
+      </div>
+      <div class="bmk">
+        <div class="bname">Comp Set ADR &middot; Mar</div>
+        <div class="bval">$333</div>
+        <div class="bbench">Austin CBD luxury rate<br>Rainey $256 &middot; -$78 gap</div>
+        <span class="bstatus bad">Rate gap</span>
+      </div>
+      <div class="bmk">
+        <div class="bname">Comp Set RevPAR &middot; Mar</div>
+        <div class="bval">$234</div>
+        <div class="bbench">Comp-set net RevPAR<br>Rainey $183 &middot; -$51 gap</div>
+        <span class="bstatus mid">Below parity</span>
+      </div>
+      <div class="bmk">
+        <div class="bname">Rate gap &middot; $/night</div>
+        <div class="bval">-$78</div>
+        <div class="bbench">ADR pricing power headroom<br>On 1,309 Mar RN = ~$102K upside</div>
+        <span class="bstatus bad">Q2 recapture lever</span>
+      </div>
+    </div>
+
+    <div class="tldr" style="margin-top:22px;">
+      <div class="tag">Peak-period signal</div>
+      <p><strong>The Austin CBD luxury comp set is priced to premium positioning year-round.</strong> Austin's peak-demand calendar concentrates around SXSW-adjacent shoulder weeks, ACL Fest, UT graduation, Formula 1 (October), corporate relocation season, and warm-weather leisure compression. The March comp-set ADR of $333 represents a post-SXSW baseline &mdash; Q2 compression nights will price higher. The highest-value Q2 action is closing the ARI gap on Austin's compression dates the comp set is already pricing to, while maintaining the MPI 100+ occupancy-share position that March established. Ownership-comp distortion on reported ADR is a material factor &mdash; see Section 7 for the ~528 Q1 RN at comp or heavily-subsidized rate.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 6 &middot; LENGTH OF STAY / REVENUE MIX ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-6">
+    <div>
+      <div class="lbl">Section 6</div>
+      <h2>Length of Stay &amp; Revenue Mix</h2>
+    </div>
+    <div class="right">Source: LOS Segment Drilldown &middot; Jan-Mar 2026<br>Daily &middot; Weekly &middot; Monthly night buckets</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">Length of Stay &middot; Q1 2026 &middot; New Property</div>
+    <h2 class="ph">The book opened heavy on transient Daily volume with a developing mid-stay base.</h2>
+    <p class="plede">ROOST Rainey finished Q1 with a revenue mix that skews meaningfully toward Daily (1-6 night) transient demand at 72.5% of captured segment revenue, with Weekly (7-29 nights) building at 23.4% and Monthly (30+ nights) at 4.1%. This is a materially different three-band profile than the ROOST portfolio average &mdash; Daily transient is pulling the ramp, and the extended-stay foundation is still building behind it. No prior-year data exists; the property opened in early 2026 and Q1 2026 is the first period with a full-quarter LOS read.</p>
+
+    <h3 class="kicker" style="margin-top:24px;">Revenue mix &middot; Daily / Weekly / Monthly buckets</h3>
+    <h2 class="ph" style="margin-bottom:18px;">Transient Daily at 73% &middot; Weekly 23% &middot; Monthly 4% &mdash; transient-weighted composition from quarter one.</h2>
+
+    <div class="losgrid">
+
+      <div class="loschart">
+        <div class="chead">
+          <div class="ckicker">Revenue Contribution &middot; % of Q1 Total</div>
+          <h2 class="ctitle">Daily carries the majority; Monthly still building.</h2>
+          <div class="clegend"><span class="l26">Q1 2026</span><span style="color:var(--muted);font-style:italic;">First full quarter &middot; no prior-year data</span></div>
+        </div>
+        <div class="losplot">
+          <div class="losrows">
+            <div class="losrow">
+              <div class="losax">Daily<br><small style="font-weight:400;font-size:10px;color:var(--muted);">1-6 nights</small></div>
+              <div class="losbars2">
+                <div class="hb"><div class="hbfill y26" style="width:90.6%;"></div></div>
+              </div>
+              <div class="losvals2">
+                <div class="hbval">72.5%</div>
+              </div>
+            </div>
+            <div class="losrow">
+              <div class="losax">Weekly<br><small style="font-weight:400;font-size:10px;color:var(--muted);">7-29 nights</small></div>
+              <div class="losbars2">
+                <div class="hb"><div class="hbfill y26" style="width:29.3%;"></div></div>
+              </div>
+              <div class="losvals2">
+                <div class="hbval">23.4%</div>
+              </div>
+            </div>
+            <div class="losrow">
+              <div class="losax">Monthly<br><small style="font-weight:400;font-size:10px;color:var(--muted);">30+ nights</small></div>
+              <div class="losbars2">
+                <div class="hb"><div class="hbfill y26" style="width:5.1%;"></div></div>
+              </div>
+              <div class="losvals2">
+                <div class="hbval">4.1%</div>
+              </div>
+            </div>
+          </div>
+          <div class="axisbase"></div>
+          <div class="gridline" style="left:84px;"></div>
+          <div class="gridline" style="left:calc(50% + 5px);"></div>
+          <div class="gridline" style="right:74px;"></div>
+          <div class="axislabel left" style="left:84px;">0%</div>
+          <div class="axislabel" style="left:calc(50% + 5px);">40%</div>
+          <div class="axislabel right" style="right:74px;">80%</div>
+        </div>
+      </div>
+
+      <div class="loschart">
+        <div class="chead">
+          <div class="ckicker">Revenue ($K) &middot; Q1 YTD by bucket</div>
+          <h2 class="ctitle">Daily $323K &middot; Weekly $104K &middot; Monthly $18K.</h2>
+          <div class="clegend"><span class="l26">Q1 2026</span><span style="color:var(--muted);font-style:italic;">First full quarter &middot; no prior-year data</span></div>
+        </div>
+        <div class="losplot">
+          <div class="losrows">
+            <div class="losrow">
+              <div class="losax">Daily</div>
+              <div class="losbars2">
+                <div class="hb"><div class="hbfill y26" style="width:98.0%;"></div></div>
+              </div>
+              <div class="losvals2">
+                <div class="hbval">$323K</div>
+              </div>
+            </div>
+            <div class="losrow">
+              <div class="losax">Weekly</div>
+              <div class="losbars2">
+                <div class="hb"><div class="hbfill y26" style="width:31.7%;"></div></div>
+              </div>
+              <div class="losvals2">
+                <div class="hbval">$104K</div>
+              </div>
+            </div>
+            <div class="losrow">
+              <div class="losax">Monthly</div>
+              <div class="losbars2">
+                <div class="hb"><div class="hbfill y26" style="width:5.5%;"></div></div>
+              </div>
+              <div class="losvals2">
+                <div class="hbval">$18K</div>
+              </div>
+            </div>
+          </div>
+          <div class="axisbase"></div>
+          <div class="gridline" style="left:84px;"></div>
+          <div class="gridline" style="left:calc(50% + 5px);"></div>
+          <div class="gridline" style="right:74px;"></div>
+          <div class="axislabel left" style="left:84px;">$0</div>
+          <div class="axislabel" style="left:calc(50% + 5px);">$165K</div>
+          <div class="axislabel right" style="right:74px;">$330K</div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="kicker" style="margin-top:28px;">Segment detail &middot; Q1 2026 YTD</h3>
+    <h2 class="ph" style="margin-bottom:14px;">Three buckets tell the composition story.</h2>
+    <table class="data">
+      <thead><tr><th>Length of Stay</th><th>Room Nights '26</th><th>Revenue '26</th><th>Contribution '26</th><th>Avg ADR (implied)</th></tr></thead>
+      <tbody>
+        <tr><td>Daily &middot; 1-6 nights</td><td>1,470</td><td>$322,828</td><td>72.5%</td><td>$220</td></tr>
+        <tr><td>Weekly &middot; 7-29 nights</td><td>391</td><td>$104,286</td><td>23.4%</td><td>$267</td></tr>
+        <tr><td>Monthly &middot; 30+ nights</td><td>247</td><td>$18,268</td><td>4.1%</td><td>$74</td></tr>
+        <tr class="total"><td>Total</td><td>2,108</td><td>$445,382</td><td>100%</td><td>$211</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;">Note: LOS-segmentation total ($445,382) reconciles to P&amp;L Room Revenue of $489,696; the ~$44K delta reflects ancillary fees, fee revenue, and timing / allowance differences between reservation PMS-level and GL-level recognition. The Monthly implied ADR of $74 is materially depressed by the LV Collective ownership-directed booking block at ~$67 blended rate (see Section 7); on paying-guest only, Monthly ADR would print meaningfully higher.</p>
+
+    <h3 class="kicker" style="margin-top:28px;">March-only &middot; Length of Stay composition</h3>
+    <h2 class="ph" style="margin-bottom:14px;">March mix tilts more heavily to Daily on stabilized transient demand.</h2>
+    <table class="data">
+      <thead><tr><th>Length of Stay</th><th>Room Nights &middot; Mar</th><th>Revenue &middot; Mar</th><th>Contribution &middot; Mar</th><th>Avg ADR (implied)</th></tr></thead>
+      <tbody>
+        <tr><td>Daily &middot; 1-6 nights</td><td>971</td><td>$233,963</td><td>69.8%</td><td>$241</td></tr>
+        <tr><td>Weekly &middot; 7-29 nights</td><td>255</td><td>$85,866</td><td>25.6%</td><td>$337</td></tr>
+        <tr><td>Monthly &middot; 30+ nights</td><td>83</td><td>$15,133</td><td>4.5%</td><td>$182</td></tr>
+        <tr class="total"><td>March Total</td><td>1,309</td><td>$334,962</td><td>100%</td><td>$256</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;">Note: March LOS total ($334,962) ties directly to March Net Revenues ($334,464) within ~$500 (recognition/timing). Weekly ADR of $337 exceeds Daily ADR of $241 because the Weekly bucket carries a premium mid-stay business-travel tier in March; Daily carries OTA-discounted transient at scale. March Monthly ADR at $182 remains depressed by the LV Collective subsidized component but shows a recovery trajectory from the Q1 YTD Monthly ADR of $74 as paying extended-stay begins to build.</p>
+
+    <div class="tldr">
+      <div class="tag">What it means</div>
+      <p><strong>The quarter-one mix is transient-weighted in a way that mirrors the Austin CBD market profile &mdash; heavy Daily, building Weekly, nascent Monthly.</strong> Daily at 72.5% is the transient engine (OTAs, leisure, short-stay corporate), Weekly at 23.4% is the mid-stay business / relocation block beginning to build, and Monthly at 4.1% reflects the combination of (a) a nascent paying extended-stay base and (b) the LV Collective ownership-directed block that sits at subsidized rate. The March-only move toward Daily (69.8%) and Weekly (25.6%) with Monthly holding at 4.5% confirms the property is capturing stabilization-range transient and mid-stay demand without yet having scaled the extended-stay base that is structurally present at other ROOST properties. The Q2 development priority is building the paying Monthly 30+ segment through corporate-housing relationships, relocation providers, and direct-corporate negotiated extended-stay rate codes.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 7 &middot; TOP PRODUCING COMPANIES ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-7">
+    <div>
+      <div class="lbl">Section 7</div>
+      <h2>Top Producing Companies &middot; Q1 2026 YTD</h2>
+    </div>
+    <div class="right">Ranked by revenue &middot; Consolidated at true-company level<br>Source: Company Segment Drilldown &middot; Jan-Mar 2026</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">Top Producing Companies &middot; Q1 2026 YTD &middot; Named companies only</div>
+    <h2 class="ph">Expedia Group anchors the book; ownership-directed complimentary production is the single largest distortion to reported KPIs.</h2>
+    <p class="plede">Production is re-presented at the true-company level. Named-company bookings have been rolled up across all distribution buckets so each company appears exactly once with its consolidated Q1 total. All ownership-directed complimentary stays (COMP, Method Co., ROOST Tampa House Account, and related zero-revenue house accounts) are consolidated into a single <strong>Complimentary (Ownership)</strong> line representing 179 Q1 room nights at $0 revenue. Expedia Group (853 RN / $191,708 / $225 ADR) is the largest single producer and Booking Holdings (99 RN / $32,453 / $328 ADR) is the second. LV Collective (349 RN / $23,358 at $67 ADR) is ownership-directed but subsidized and remains a distinct line. Commercial performance should be read using the paying-guest ADR bifurcation below rather than the blended reported ADR.</p>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="lbl">Named-company revenue &middot; Q1</div>
+        <div class="val">$299K</div>
+        <div class="delta">~67% of captured-segment revenue</div>
+        <div class="sub">8 identified paying companies</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Expedia Group</div>
+        <div class="val">$191,708</div>
+        <div class="delta">#1 company &middot; 853 RN</div>
+        <div class="sub">~43% of Q1 captured-segment revenue</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Complimentary + subsidized RN</div>
+        <div class="val">528 RN</div>
+        <div class="delta dn">~25% of Q1 total RN</div>
+        <div class="sub">179 Complimentary ($0) + 349 LV Collective ($67 ADR)</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Direct-corporate seed base</div>
+        <div class="val">~$39K</div>
+        <div class="delta">6 named paying companies (ex-OTA)</div>
+        <div class="sub">Group, corporate, tech, events</div>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tag">Reading the book &mdash; concentration, ownership comp, paying-guest signal</div>
+      <p><strong>One OTA parent at the top, a consolidated ownership-directed block in the middle, and a thin paying-corporate tail.</strong> Concentration is high: Expedia Group alone ($191,708 / 853 RN) represents ~43% of Q1 captured-segment revenue &mdash; the expected profile for a new property in its first full quarter where OTAs drive ramp-period volume. Of the named-company <em>paying</em> revenue, approximately 75% flows through OTA parents (Expedia + Booking) and only 25% (~$39K) comes from group, corporate, and event accounts combined (Group ENT, Zelandez, Paseo, Standard Electron). <strong>Ownership-directed volume now reads clearly on two lines: 179 RN of true Complimentary ($0 ADR) and 349 RN of LV Collective subsidized at $67 ADR &mdash; together ~528 RN, about 25% of the quarter.</strong> The ADR bifurcation below separates the blended reported ADR ($211) from the paying-guest ADR ($267). The paying-guest view is the appropriate benchmark for commercial reads: underlying rate demand is ~$56/night stronger than the reported headline. Q2's highest-leverage actions are (1) repricing or formalizing the LV Collective block to a market-reflective rate, (2) deliberate development of Austin tech / corporate / film-production direct-corporate accounts, and (3) converting unattributed retail and loyalty channel volume into named-company production through TMC-preferred placement and negotiated rate-code setup.</p>
+    </div>
+
+    <div class="card" style="margin-top:22px;">
+      <h3>Top Producing Companies &middot; Q1 2026 YTD &middot; Consolidated</h3>
+      <h2>Ranked by revenue &middot; ownership complimentary rolled into a single line</h2>
+      <table class="data">
+        <thead><tr><th>#</th><th>Company</th><th>Category</th><th>RN</th><th>Revenue</th><th>ADR</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Expedia Group</strong></td><td>OTA parent</td><td>853</td><td>$191,708</td><td>$225</td></tr>
+          <tr><td>2</td><td><strong>Booking Holdings</strong></td><td>OTA parent</td><td>99</td><td>$32,453</td><td>$328</td></tr>
+          <tr><td>3</td><td><strong>LV Collective</strong></td><td>Ownership-directed &middot; subsidized</td><td>349</td><td>$23,358</td><td>$67</td></tr>
+          <tr><td>4</td><td><strong>Group ENT</strong></td><td>Group / entertainment</td><td>28</td><td>$20,892</td><td>$746</td></tr>
+          <tr><td>5</td><td><strong>Zelandez</strong></td><td>Corporate / group</td><td>44</td><td>$9,196</td><td>$209</td></tr>
+          <tr><td>6</td><td><strong>Paseo</strong></td><td>Corporate / events</td><td>26</td><td>$8,922</td><td>$343</td></tr>
+          <tr><td>7</td><td><strong>Standard Electron</strong></td><td>Corporate</td><td>3</td><td>$957</td><td>$319</td></tr>
+          <tr><td>8</td><td><strong>Complimentary</strong></td><td>Ownership</td><td>179</td><td>$0</td><td>$0</td></tr>
+          <tr class="total"><td></td><td>Total &middot; named companies</td><td></td><td>1,581</td><td>$287,486</td><td>$182</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="kicker" style="margin-top:28px;">Total ADR bifurcation &middot; Q1 2026</h3>
+    <h2 class="ph" style="margin-bottom:14px;">Stripping ownership complimentary nights out of the denominator lifts Q1 ADR by $20/night; stripping subsidized LV too lifts it by $56/night.</h2>
+    <div class="card" style="padding:14px 16px;border-top:3px solid var(--coral);">
+      <table class="data" style="font-size:12.5px;">
+        <thead><tr><th>View</th><th>Basis</th><th>Q1 Room Nights</th><th>Q1 Revenue</th><th>ADR</th></tr></thead>
+        <tbody>
+          <tr><td>ADR &mdash; <strong>including</strong> Complimentary stays</td><td>Reported blended &middot; all Q1 RN</td><td>2,108</td><td>$445,382</td><td>$211</td></tr>
+          <tr><td>ADR &mdash; <strong>excluding</strong> Complimentary stays</td><td>Zero-revenue comps removed from denominator (179 RN)</td><td>1,929</td><td>$445,382</td><td class="pos">$231</td></tr>
+          <tr class="total"><td>ADR &mdash; paying guests only</td><td>Excludes Complimentary <em>and</em> LV Collective subsidized RN</td><td>1,580</td><td>$422,024</td><td class="pos">$267</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;">Complimentary (179 RN) consolidates COMP bucket (153 RN), Method Co. (20 RN), M18 (4 RN), and ROOST Tampa House Account (2 RN) &mdash; all ownership-directed with zero revenue. LV Collective (349 RN, $23,358 at $67) is ownership-directed but subsidized, not complimentary; it is shown separately in the top-producing table. <strong>Commercial production should not be interpreted using the $211 blended ADR &mdash; the paying-guest view at $267 is the appropriate benchmark for market-positioning and comp-set work.</strong></p>
+    </div>
+
+    <h3 class="kicker" style="margin-top:28px;">Unattributed channel volume &middot; Q1 2026</h3>
+    <h2 class="ph" style="margin-bottom:14px;">~$159K of Q1 revenue flowed through distribution channels without a named-company link.</h2>
+    <div class="card" style="padding:14px 16px;">
+      <table class="data" style="font-size:12.5px;">
+        <thead><tr><th>Distribution segmentation</th><th>Channel character</th><th>Revenue</th><th>% of Q1 Seg Rev</th></tr></thead>
+        <tbody>
+          <tr><td>TR Retail &mdash; Flex / Non-Refundable</td><td>Retail transient &middot; direct brand.com</td><td>~$68,000</td><td>~15%</td></tr>
+          <tr><td>TR OTA &mdash; Flex / Non-Refundable (non-Expedia / non-Booking)</td><td>Smaller OTA channels</td><td>~$28,000</td><td>~6%</td></tr>
+          <tr><td>TR Loyalty</td><td>Loyalty member rate</td><td>~$22,000</td><td>~5%</td></tr>
+          <tr><td>CT Corp &mdash; unattributed rate codes</td><td>Corporate negotiated &middot; no named company</td><td>~$24,000</td><td>~5%</td></tr>
+          <tr><td>TR Market / Promotional</td><td>Market / promo rate</td><td>~$9,000</td><td>~2%</td></tr>
+          <tr><td>Other smaller channels</td><td>House use, other remainders</td><td>~$8,000</td><td>~2%</td></tr>
+          <tr class="total"><td>Unattributed channel volume &middot; combined</td><td></td><td>~$159,000</td><td>~36%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;">This volume is driven by distribution channel, rate code, and OTA / retail / loyalty segmentations rather than a traceable company. The Q2 commercial priority is to migrate as much of this volume as possible into named-company production through direct-corporate negotiated rates, TMC-preferred placement, and Austin tech / corporate / relocation rate-code setup. Retail direct brand.com at ~$68K is a healthy early signal for direct channel development.</p>
+    </div>
+
+    <div class="two" style="margin-top:22px;">
+      <div class="card">
+        <h3>Company composition &middot; Q1 2026</h3>
+        <h2>How the named-company book is structured</h2>
+        <ul>
+          <li><strong>OTA parents</strong> &mdash; Expedia Group ($191,708) + Booking Holdings ($32,453) combine to $224,161 / ~50% of Q1 captured-segment revenue. The expected first-quarter shape for a new property where OTAs drive ramp-period volume and visibility.</li>
+          <li><strong>Group &amp; events</strong> &mdash; Group ENT ($20,892), Paseo ($8,922), Zelandez ($9,196) &mdash; three named event / group accounts combining to ~$39K. Group ENT's $746 ADR on 28 RN is the clearest signal of premium-rate group demand capacity.</li>
+          <li><strong>Ownership-directed</strong> &mdash; LV Collective (349 RN / $23,358 at $67 ADR) is the largest single distortion to reported KPIs through a subsidized rate, and the consolidated Complimentary (Ownership) line (179 RN / $0) captures all zero-revenue house-account activity in a single row for clean executive reads.</li>
+          <li><strong>Paying corporate / direct</strong> &mdash; Limited named-account depth in Q1. The Austin tech, entertainment, film-production, and corporate-relocation channels are structurally large and under-indexed in the Q1 book.</li>
+          <li><strong>Extended-stay / relocation</strong> &mdash; No named corporate-housing or relocation specialists in the Q1 top-producing ranking. This is the clearest commercial build opportunity for Q2.</li>
+        </ul>
+      </div>
+      <div class="card dark">
+        <h3>Where to build the book in Q2</h3>
+        <h2>Priority account-development targets</h2>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>Reprice or formalize LV Collective.</strong> The 349 RN / $67 ADR block is the single largest reported-KPI distortion and the clearest rate-recapture opportunity. Any move to a closer-to-market rate produces material revenue upside without inventory build.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>Austin tech &amp; venture corporate.</strong> Austin is home to Tesla, Oracle, Meta, Indeed, and a dense tier of growth-stage technology companies. None currently appear in the Q1 top-producing ranking &mdash; a TMC-preferred placement push plus direct-corporate rate-code setup with Austin-based and relocating HQs is the highest-value Q2 commercial initiative.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0 0 10px;"><strong>Film &amp; live-music production.</strong> Austin's film and live-music production economy generates sustained multi-week mid-stay demand. Group ENT's early traction (28 RN / $746 ADR) signals appetite for the property. Deliberate account development with production companies, talent agencies, and venue operators builds a defensible premium-rate base.</p>
+        <p style="font-size:13px;line-height:1.55;margin:0;"><strong>Extended-stay / relocation.</strong> The Monthly 30+ segment sits at only $18K of Q1 revenue (4.1% share). Engagement with Churchill Living, Sirva, BridgeStreet, National Corporate Housing, and Austin-based relocation specialists is the path to building the paying Monthly base the ROOST brand is structurally well-suited to capture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 8 &middot; GUEST EXPERIENCE ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-8">
+    <div>
+      <div class="lbl">Section 8</div>
+      <h2>Guest Experience &amp; Reputation</h2>
+    </div>
+    <div class="right">Source: Revinate Quarterly Guest Satisfaction Report (Q1 2026)<br>Jan 1 &ndash; Mar 31, 2026 &middot; First full quarter of reviews</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">Guest Experience &middot; Q1 2026 &middot; First Full Quarter</div>
+    <h2 class="ph">Rating leads the comp set; review volume and Tripadvisor visibility are the Q2 build.</h2>
+    <p class="plede">ROOST Rainey closed Q1 2026 with a blended Review Rating of <strong>4.73 on 67 reviews (Rank #2 of 6 in the Austin comp set, Comp Index 107.3)</strong> and a <strong>Net Promoter Score of 56.3 on 48 completed surveys</strong>. Category star ratings run #1 in the comp set on Cleanliness (4.95), Rooms (4.94), Service (4.82), and Value (5.00); Recommended rate sits at 100%. The constraint is not sentiment &mdash; it is visibility: review volume (67) ranks #6 of 6 in the comp set (comp avg 153), Tripadvisor Popularity Index (0.26) is at 31% of the 0.85 goal, and the Austin city rank is #193. As this is the property's first full quarter of operation, <strong>no Q1 2025 (LY) comparison is available</strong> in the Revinate report.</p>
+
+    <!-- ========== 1. GUEST EXPERIENCE SCORECARD ========== -->
+    <div class="card" style="margin-bottom:22px;border-top:3px solid var(--coral);">
+      <h3>01 &middot; Guest Experience Scorecard</h3>
+      <h2>Q1 2026 headline metrics vs. Austin competitive set</h2>
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Q1 2026</th>
+            <th>Comp Rank</th>
+            <th>Comp Set Avg</th>
+            <th>Comp Index</th>
+            <th>% of Goal</th>
+            <th>vs. LY (Q1 '25)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Review Rating (blended)</td>
+            <td>4.73</td>
+            <td class="pos">#2 of 6</td>
+            <td>4.41</td>
+            <td class="pos">107.3</td>
+            <td class="pos">118%</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+          <tr>
+            <td>Recommended Rate</td>
+            <td>100%</td>
+            <td class="pos">#1 of 6</td>
+            <td>100%</td>
+            <td>100.0</td>
+            <td class="pos">118%</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+          <tr>
+            <td>Positive Reviews Share</td>
+            <td>91%</td>
+            <td class="pos">#2 of 6</td>
+            <td>83%</td>
+            <td class="pos">109.5</td>
+            <td class="pos">107%</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+          <tr>
+            <td>Review Volume</td>
+            <td>67</td>
+            <td class="neg">#6 of 6</td>
+            <td>153</td>
+            <td class="neg">43.8</td>
+            <td class="pos">132%</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+          <tr>
+            <td>Tripadvisor Popularity Index</td>
+            <td>0.26</td>
+            <td class="neg">#6 of 6</td>
+            <td>0.72</td>
+            <td class="neg">36.2</td>
+            <td class="neg">31%</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+          <tr>
+            <td>Tripadvisor Austin Rank</td>
+            <td>#193</td>
+            <td class="neg">#6 of 6</td>
+            <td>&mdash;</td>
+            <td class="neg">&mdash;</td>
+            <td class="neg">&mdash;</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+          <tr>
+            <td>Survey NPS</td>
+            <td>56.3</td>
+            <td class="pos">Above 50 bmk</td>
+            <td>&mdash;</td>
+            <td class="pos">&mdash;</td>
+            <td class="pos">&mdash;</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+          <tr>
+            <td>Survey Count</td>
+            <td>48</td>
+            <td class="neu">&mdash;</td>
+            <td>51</td>
+            <td class="neu">94.0</td>
+            <td class="pos">&mdash;</td>
+            <td class="neu">N/A &ndash; first full Q</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px;font-style:italic;">Source: Revinate Quarterly Property Report, Q1 2026. Comp set (Austin): The LINE Austin, Hotel Van Zandt, Homewood Suites Austin Downtown, Hotel Magdalena, Thompson Austin. Color key &mdash; <span style="color:var(--good);font-weight:700;">green = favorable</span> (top-half comp rank or above benchmark); <span style="color:var(--bad);font-weight:700;">red = unfavorable</span> (bottom-half comp rank or below goal). LY comparison unavailable: Revinate "LY Period" column is blank across all metrics as this is the property's first full quarter.</p>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="lbl">Blended Review Rating</div>
+        <div class="val">4.73</div>
+        <div class="delta">Rank #2 of 6 &middot; Comp Index 107.3</div>
+        <div class="sub">67 reviews &middot; comp set avg 4.41</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Net Promoter Score</div>
+        <div class="val">56.3</div>
+        <div class="delta">Above 50 hospitality benchmark</div>
+        <div class="sub">48 surveys &middot; 33 Prom / 9 Pass / 6 Det</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Tripadvisor Popularity</div>
+        <div class="val">#193</div>
+        <div class="delta dn">Rank #6 &middot; 31% of goal</div>
+        <div class="sub">Volume-weighted &mdash; Q2 build</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Review Volume &middot; Q1</div>
+        <div class="val">67</div>
+        <div class="delta dn">Rank #6 of 6 &middot; 43.8 Comp Index</div>
+        <div class="sub">Comp set avg 153 &middot; 132% of goal</div>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tag">The scorecard read</div>
+      <p><strong>Rating quality outperforms the comp set; review volume and Tripadvisor visibility lag.</strong> The property posts #1 rank on four of five category star ratings (Cleanliness 4.95, Rooms 4.94, Service 4.82, Value 5.00) and a 100% Recommended rate. The one clear red on the scorecard is volume &mdash; 67 reviews vs. a comp-set average of 153 and a Tripadvisor Popularity Index at 31% of goal. The operational read: sentiment is earning itself; the Q2 lever is directing existing satisfied guests to public review surfaces (particularly Tripadvisor).</p>
+    </div>
+
+    <!-- ========== NPS composition (survey-sourced — retained) ========== -->
+    <div class="two" style="margin-top:22px;">
+      <div class="card">
+        <h3>NPS Composition &middot; Q1 2026</h3>
+        <h2>Promoter share of 69% drives an NPS of 56.3.</h2>
+        <div class="stacked">
+          <div class="sbar">
+            <div class="slabel">Q1 2026</div>
+            <div class="strack">
+              <div class="seg prom" style="width:69%;">69%</div>
+              <div class="seg pass" style="width:19%;">19%</div>
+              <div class="seg det"  style="width:12%;">12%</div>
+            </div>
+          </div>
+        </div>
+        <div class="legend">
+          <span class="l-prom">Promoters (9-10)</span>
+          <span class="l-pass">Passives (7-8)</span>
+          <span class="l-det">Detractors (0-6)</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;">
+          <div style="border:1px solid var(--line);border-radius:3px;padding:10px 14px;">
+            <div style="font-size:22px;font-weight:300;color:var(--coral);">69%</div>
+            <div style="font-size:12px;font-weight:700;color:var(--slate);">Promoters (33)</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">Strong share</div>
+          </div>
+          <div style="border:1px solid var(--line);border-radius:3px;padding:10px 14px;">
+            <div style="font-size:22px;font-weight:300;color:var(--coral);">19%</div>
+            <div style="font-size:12px;font-weight:700;color:var(--slate);">Passives (9)</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">Typical share</div>
+          </div>
+          <div style="border:1px solid var(--line);border-radius:3px;padding:10px 14px;">
+            <div style="font-size:22px;font-weight:300;color:var(--coral);">12%</div>
+            <div style="font-size:12px;font-weight:700;color:var(--slate);">Detractors (6)</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">Small absolute N (6)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="nps-wrap">
+          <div style="font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:700;">Net Promoter Score &middot; Q1 2026</div>
+          <div class="nps-circle">
+            <div class="big">56</div>
+            <div class="cap">NPS</div>
+          </div>
+          <div class="nps-delta">Strong (&gt;50 benchmark)</div>
+          <div class="nps-note">Calculated as % Promoters &minus; % Detractors on 48 Q1 surveys.<br>Hospitality benchmark: 50 is strong; 70+ is elite. Q1 actual: <strong>56.3</strong> &middot; LY N/A.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== Category star ratings (from new file) ========== -->
+    <h3 class="kicker" style="margin-top:28px;">Category star ratings &middot; Q1 2026 vs. comp set</h3>
+    <h2 class="ph" style="margin-bottom:14px;">#1 rank in four of five categories; Location is the one build category.</h2>
+    <div class="card" style="padding:14px 16px;">
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Q1 '26 Rating</th>
+            <th>Comp Rank</th>
+            <th>Comp Set Avg</th>
+            <th>vs. LY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Cleanliness</td><td>4.95</td><td class="pos">#1 of 6</td><td>4.49</td><td class="neu">N/A</td></tr>
+          <tr><td>Rooms</td><td>4.94</td><td class="pos">#1 of 6</td><td>4.04</td><td class="neu">N/A</td></tr>
+          <tr><td>Service</td><td>4.82</td><td class="pos">#1 of 6</td><td>4.25</td><td class="neu">N/A</td></tr>
+          <tr><td>Value</td><td>5.00</td><td class="pos">#1 of 6</td><td>3.80</td><td class="neu">N/A</td></tr>
+          <tr><td>Location</td><td>4.69</td><td class="neu">#4 of 6</td><td>4.54</td><td class="neu">N/A</td></tr>
+          <tr class="total"><td>Overall Rating</td><td>4.73</td><td class="pos">#2 of 6</td><td>4.41</td><td class="neu">N/A</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;">Austin comp set blended Review Rating averages 4.41 with the property's 4.73 ranking #2 of 6. No Q1 2025 year-over-year comparison is available &mdash; this is the property's first full quarter of reviewed operation.</p>
+    </div>
+
+    <!-- ========== 2 + 3. SENTIMENT ANALYSIS (NEW DATASET) + VISUALIZATION ========== -->
+    <div class="card" style="margin-top:22px;border-top:3px solid var(--coral);">
+      <h3>02 &middot; Sentiment Analysis &middot; Q1 2026</h3>
+      <h2>Category-level sentiment scores and comp-set index</h2>
+      <p style="font-size:12px;color:var(--ink-soft);margin:0 0 12px;">Revinate scores sentiment 0&ndash;100 based on natural-language analysis of review content. Comp Index compares property sentiment to the Austin comp-set average (100 = parity). Mention count is the number of guest comments Revinate analyzed in each category for Q1 2026.</p>
+
+      <div class="sent-chart">
+        <div class="sent-row">
+          <div class="slbl">Service</div>
+          <div class="strack"><div class="sfill pos" style="width:83%;"></div></div>
+          <div class="sval">83 <span class="smention">(40)</span></div>
+        </div>
+        <div class="sent-row">
+          <div class="slbl">Facilities</div>
+          <div class="strack"><div class="sfill pos" style="width:80%;"></div></div>
+          <div class="sval">80 <span class="smention">(44)</span></div>
+        </div>
+        <div class="sent-row">
+          <div class="slbl">Overall</div>
+          <div class="strack"><div class="sfill pos" style="width:73%;"></div></div>
+          <div class="sval">73 <span class="smention">(141)</span></div>
+        </div>
+        <div class="sent-row">
+          <div class="slbl">Food &amp; Beverage</div>
+          <div class="strack"><div class="sfill mid" style="width:71%;"></div></div>
+          <div class="sval">71 <span class="smention">(6)</span></div>
+        </div>
+        <div class="sent-row">
+          <div class="slbl">Cleanliness</div>
+          <div class="strack"><div class="sfill mid" style="width:61%;"></div></div>
+          <div class="sval">61 <span class="smention">(4)</span></div>
+        </div>
+        <div class="sent-row">
+          <div class="slbl">Rooms</div>
+          <div class="strack"><div class="sfill mid" style="width:60%;"></div></div>
+          <div class="sval">60 <span class="smention">(46)</span></div>
+        </div>
+        <div class="sent-row">
+          <div class="slbl">Value</div>
+          <div class="strack"><div class="sfill neg" style="width:47%;"></div></div>
+          <div class="sval">47 <span class="smention">(5)</span></div>
+        </div>
+      </div>
+      <div class="sent-axis">
+        <div></div>
+        <div class="atrack"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+        <div></div>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:12px;font-style:italic;">Bar color &mdash; <span style="color:var(--good);font-weight:700;">green &ge; 75</span> (strong positive language), <span style="color:var(--slate);font-weight:700;">slate 60&ndash;74</span> (mixed / neutral-positive), <span style="color:var(--bad);font-weight:700;">red &lt; 60</span> (softer language). Parenthetical = mention count for Q1 2026.</p>
+
+      <!-- Top positive / negative themes -->
+      <div class="theme-pair">
+        <div class="theme-col pos">
+          <div class="thdr">Top positive sentiment themes (Q1 '26)</div>
+          <div class="theme-item">
+            <div class="tname">Service &middot; front-of-house interactions <span class="tscore">83 / 100</span></div>
+            <div class="tinsight">Highest-scoring theme; sentiment language around front-desk and staff interactions runs above the comp set (Comp Index 103.8). Operational tie: front-desk / guest-services calibration is the clearest driver sustaining this score.</div>
+            <div class="tmeta">40 mentions &middot; Comp Index 103.8</div>
+          </div>
+          <div class="theme-item">
+            <div class="tname">Facilities &middot; building amenities &amp; physical plant <span class="tscore">80 / 100</span></div>
+            <div class="tinsight">Largest positive margin against peers of any theme (Comp Index 121.2 &mdash; 21% above comp-set sentiment). Operational tie: amenity delivery, common-area presentation, and building upkeep are material differentiators vs. Austin peers.</div>
+            <div class="tmeta">44 mentions &middot; Comp Index 121.2</div>
+          </div>
+          <div class="theme-item">
+            <div class="tname">Overall experience composite <span class="tscore">73 / 100</span></div>
+            <div class="tinsight">Aggregate sentiment across all 141 analyzed mentions runs 4.3% above the comp-set average &mdash; signals the positive tone is broad-based, not driven by a single category.</div>
+            <div class="tmeta">141 mentions &middot; Comp Index 104.3</div>
+          </div>
+          <div class="theme-item">
+            <div class="tname">Food &amp; Beverage (directional) <span class="tscore">71 / 100</span></div>
+            <div class="tinsight">Positive early signal, but the thin 6-mention volume and 95.9 Comp Index (4% below comp set) caution against over-reading. Operational tie: F&amp;B narrative and amenity-tie messaging remain a build area.</div>
+            <div class="tmeta">6 mentions &middot; Comp Index 95.9</div>
+          </div>
+        </div>
+
+        <div class="theme-col neg">
+          <div class="thdr">Top negative / underperforming sentiment themes (Q1 '26)</div>
+          <div class="theme-item">
+            <div class="tname">Value language softness <span class="tscore">47 / 100</span></div>
+            <div class="tinsight">Lowest absolute sentiment score despite the property's 5.00 star Value rating &mdash; a gap between stated rating and commentary language. Thin mention volume (5) caps certainty; directionally, it suggests price-context language in reviews does not match the #1 star rank.</div>
+            <div class="tmeta">5 mentions &middot; rating 5.00 (rank #1) &middot; Comp Index 109.3</div>
+          </div>
+          <div class="theme-item">
+            <div class="tname">Rooms sentiment vs. star-rating gap <span class="tscore">60 / 100</span></div>
+            <div class="tinsight">Sentiment score runs well below the 4.94 Rooms star rating (#1 in comp set). Across 46 mentions, language around in-room experience is softer than the star score implies. Operational tie: unit-level commentary (maintenance touch-points, HVAC, bath/kitchen detail) is where language tightening shows up first.</div>
+            <div class="tmeta">46 mentions &middot; rating 4.94 (rank #1) &middot; Comp Index 107.1</div>
+          </div>
+          <div class="theme-item">
+            <div class="tname">Cleanliness sentiment below comp set <span class="tscore">61 / 100</span></div>
+            <div class="tinsight">Only theme where the property trails the comp set on sentiment (Comp Index 85.9 &mdash; 14% below peers), despite holding the #1 star rating on Cleanliness (4.95). Mention volume is thin (4), but the direction warrants a housekeeping language review &mdash; sentiment softness despite strong score often signals specific touch-points the team can address.</div>
+            <div class="tmeta">4 mentions &middot; rating 4.95 (rank #1) &middot; Comp Index 85.9</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:14px;font-style:italic;">Note: The Revinate "Trending Positive" and "Trending Negative" theme sections are blank in the Q1 2026 report output &mdash; no named theme labels with counts are populated. The analysis above is built entirely from the category sentiment table (sentiment score, mention volume, and comp index) without inference beyond what the report quantifies.</p>
+    </div>
+
+    <!-- ========== 4. OWNERSHIP TAKEAWAYS ========== -->
+    <div class="card" style="margin-top:22px;border-top:3px solid var(--slate);">
+      <h3>03 &middot; Guest Experience &middot; Ownership Takeaways</h3>
+      <h2>Where the property is winning, where language is soft, and where to focus</h2>
+
+      <div class="own-grid">
+        <div class="own-card pos">
+          <div class="olbl">What is leading</div>
+          <div class="otitle">Facilities sentiment 21% above peers</div>
+          <div class="odesc">Facilities Comp Index 121.2 is the property's largest margin over the comp set of any scored theme; Service sentiment (Comp Index 103.8) and Overall sentiment (104.3) both run above peers. The physical plant and staff interactions are the two material differentiators against the Austin comp set.</div>
+        </div>
+        <div class="own-card neg">
+          <div class="olbl">What is underperforming</div>
+          <div class="otitle">Cleanliness sentiment trails peers</div>
+          <div class="odesc">Cleanliness is the one theme with a below-parity Comp Index (85.9) despite the #1 star rating (4.95). Mention volume is thin, but the direction is clear: commentary language does not match the topline score. A housekeeping walk-through against guest-language patterns is the targeted fix.</div>
+        </div>
+        <div class="own-card foc">
+          <div class="olbl">Where operational focus is required</div>
+          <div class="otitle">Review volume &amp; Tripadvisor visibility</div>
+          <div class="odesc">Review count rank #6 of 6 (67 vs. comp avg 153) and Tripadvisor Popularity Index at 31% of goal (Austin rank #193) are the scorecard's only red cells. The rating quality proves sentiment exists; Q2 priority is directing existing satisfied guests to public review surfaces &mdash; Tripadvisor widgets in confirmation and post-stay flows.</div>
+        </div>
+      </div>
+
+      <div class="own-grid" style="margin-top:12px;">
+        <div class="own-card pos">
+          <div class="olbl">What improved vs. LY</div>
+          <div class="otitle">LY comparison not available</div>
+          <div class="odesc">Q1 2025 data is not populated in the Revinate LY column &mdash; this is the property's first full quarter of operation. YoY deltas cannot be reported in Q1 2026; forward tracking begins with Q1 2027 as the first LY-eligible baseline.</div>
+        </div>
+        <div class="own-card neg">
+          <div class="olbl">Rating vs. sentiment-language gaps</div>
+          <div class="otitle">Rooms and Value language softer than star rating</div>
+          <div class="odesc">Rooms sentiment 60 vs. rating 4.94; Value sentiment 47 vs. rating 5.00. Star-rating #1 rank is holding, but the underlying language is less enthusiastic than the score implies. Directional read; mention counts (46 Rooms, 5 Value) are uneven, so interpret with weight on Rooms and caution on Value.</div>
+        </div>
+        <div class="own-card foc">
+          <div class="olbl">Operational focus &middot; Q2</div>
+          <div class="otitle">Three targeted moves</div>
+          <div class="odesc">(1) Housekeeping language audit to close the cleanliness sentiment gap. (2) Tripadvisor volume build from 3 reviews toward 30+ by quarter-end. (3) Survey completion lift from the current 7.4% rate to enlarge the mention base Revinate scores against &mdash; a larger sample tightens theme reliability.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tag">Strategic focus</div>
+      <p><strong>Rating and sentiment lead the comp set; volume and Tripadvisor visibility are the Q2 build.</strong> Q1 2026 closes with blended Review Rating 4.73 (Rank #2 of 6, Comp Index 107.3), NPS 56.3, #1 rank on four of five star-rated categories, Facilities sentiment 21% above comp set, and Service sentiment 4% above comp set. The two reds on the scorecard are both volume metrics &mdash; review count (Rank #6) and Tripadvisor Popularity Index (31% of goal). Inside the sentiment data, the one theme trailing peers is Cleanliness (Comp Index 85.9) despite the #1 star rating, and Rooms sentiment (60) runs below its 4.94 star rating. Q2 priorities: (1) direct existing satisfied guests to Tripadvisor via confirmation and post-stay placements; (2) lift survey completion rate from 7.4% to enlarge the sentiment base; (3) targeted housekeeping and in-room language review to close the sentiment-to-rating gaps. No Q1 2025 comparison is available &mdash; this is the property's first full quarter.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 9 &middot; KEY TAKEAWAYS ===================== -->
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+  <div class="sectionband" id="section-9">
+    <div>
+      <div class="lbl">Section 9</div>
+      <h2>Key Takeaways &amp; Strategic Implications</h2>
+    </div>
+    <div class="right">Heading into Q2 2026<br>Ramp complete &middot; stabilized run-rate ahead</div>
+  </div>
+
+  <section class="part">
+    <div class="kicker">Key Takeaways &middot; Q1 2026 &middot; Strategic Implications</div>
+    <h2 class="ph">Ramp is closed; the building blocks of a stabilized run-rate are in place.</h2>
+    <p class="plede">ROOST Rainey completed its first full quarter of operation with the ramp trajectory intact and the operating model validated. March's $130,683 of NOI is the property's first stabilized profitable month and the template for the Q2 run-rate. The Q1 story is one of volume delivered inside the quarter, sentiment earned from day one, and a set of rate / account-development / comp-reduction / review-volume levers queued for Q2 execution.</p>
+
+    <div class="take">
+      <div class="t g">
+        <h4>Strength &middot; Ramp delivered on pace</h4>
+        <p>Jan Rev $24,984 &rarr; Feb $80,522 &rarr; Mar $332,171. Property reached stabilization range inside three months with March posting MPI 102.0 and NOI $131K &mdash; the template for the Q2 run-rate.</p>
+      </div>
+      <div class="t g">
+        <h4>Strength &middot; March Room Revenue +$82K vs budget</h4>
+        <p>March Room Revenue of $344,825 vs $262,258 budget (+$82,567 / +31.5%) is the strongest single-month variance of the quarter and the clearest signal the demand ramp landed ahead of plan.</p>
+      </div>
+      <div class="t g">
+        <h4>Strength &middot; Rating leads the Austin comp set</h4>
+        <p>Blended Review Rating 4.73 on 67 reviews (Rank #2 of 6, Comp Index 107.3) and NPS 56.3. Category star ratings rank #1 of 6 in Cleanliness (4.95), Rooms (4.94), Service (4.82), and Value (5.00); 100% Recommended. Facilities sentiment runs 21% above the comp-set average.</p>
+      </div>
+      <div class="t w">
+        <h4>Focus &middot; Rate is the Q2 lever</h4>
+        <p>ARI 76.7 in March. $256 ADR vs $333 comp-set ADR = $78/night gap. Austin peak-season calendar (ACL Fest, summer leisure, UT graduation, F1, corporate relocation season) is the natural rate-recapture window.</p>
+      </div>
+    </div>
+
+    <div class="take" style="margin-top:14px;">
+      <div class="t i">
+        <h4>Focus &middot; Reduce ownership-comp distortion</h4>
+        <p>528 Q1 room nights (~25%) in ownership-directed status &mdash; 179 RN consolidated Complimentary (Ownership) at $0 and 349 RN LV Collective at $67 ADR. Repricing or formalizing the LV block is the largest single reported-KPI distortion to address; paying-guest ADR of $267 is the appropriate commercial benchmark.</p>
+      </div>
+      <div class="t i">
+        <h4>Focus &middot; Tripadvisor volume build</h4>
+        <p>Only 3 Tripadvisor reviews caps ranking visibility at #193 in Austin regardless of sentiment. Review-volume build (post-stay triggers, confirmation-flow widgets) is the single highest-leverage reputation initiative.</p>
+      </div>
+      <div class="t w">
+        <h4>Opportunity &middot; Austin corporate &amp; extended-stay book</h4>
+        <p>Zero named Austin tech / venture / production / relocation-specialist accounts in Q1 top-producing ranking. Austin's corporate and extended-stay channels are structurally large and the clearest commercial-development priority.</p>
+      </div>
+      <div class="t w">
+        <h4>Opportunity &middot; Extend the March operating print</h4>
+        <p>March NOI $131K on 39.1% NOI margin (on Net Revenue). Repeating the March operating profile in Q2 &mdash; with rate improvement &mdash; is the near-term path to full stabilized-run-rate performance.</p>
+      </div>
+    </div>
+
+    <h3 class="kicker" style="margin-top:28px;">Q2 priorities &middot; forward-looking plan</h3>
+    <h2 class="ph" style="margin-bottom:14px;">Six priorities to convert the Q1 ramp into a stabilized-run-rate quarter.</h2>
+
+    <div class="prio-grid">
+
+      <div class="prio-card">
+        <div class="prio-num">01</div>
+        <div class="prio-body">
+          <h3>Close the ADR gap on Austin compression nights</h3>
+          <p class="prio-desc">Apply rate discipline on peak-demand dates &mdash; ACL weekends, UT graduation, F1 October, summer leisure peaks, major Austin corporate / tech events. Lift floor rate on compression nights and pull back last-room discounting. Target ARI &gt;90 on compression, holding MPI above 100.</p>
+          <div class="prio-impact">
+            <div><span class="ilbl">Target</span><span class="ival">ARI &ge; 90 on compression</span></div>
+            <div><span class="ilbl">Upside</span><span class="ival">$40-70K / quarter</span></div>
+            <div><span class="ilbl">Timing</span><span class="ival">Apr - Jun</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prio-card">
+        <div class="prio-num">02</div>
+        <div class="prio-body">
+          <h3>Reprice or formalize LV Collective block</h3>
+          <p class="prio-desc">The 349 RN Q1 LV Collective block at $67 ADR is the single largest distortion to reported KPIs and the clearest revenue-recapture opportunity without any inventory build. Work with ownership on a closer-to-market rate or firm allocation boundary; report paying-guest-only KPIs in parallel.</p>
+          <div class="prio-impact">
+            <div><span class="ilbl">Target</span><span class="ival">LV ADR &ge; $150 blended</span></div>
+            <div><span class="ilbl">Upside</span><span class="ival">~$30K / quarter</span></div>
+            <div><span class="ilbl">Timing</span><span class="ival">Apr - May</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prio-card">
+        <div class="prio-num">03</div>
+        <div class="prio-body">
+          <h3>Build Austin direct-corporate &amp; tech book</h3>
+          <p class="prio-desc">Austin's tech and growth-corporate base (Tesla, Oracle, Meta, Indeed, dense tier of VC-backed scaleups) is structurally large and currently under-indexed in the ROOST Rainey Q1 book. TMC-preferred placement with AMEXGBT / Concur / TRX plus direct-corporate rate-code setup is the Q2 commercial initiative.</p>
+          <div class="prio-impact">
+            <div><span class="ilbl">Target</span><span class="ival">Corp channel $60K+ / Q</span></div>
+            <div><span class="ilbl">Upside</span><span class="ival">Higher-ADR, direct-margin</span></div>
+            <div><span class="ilbl">Timing</span><span class="ival">End of Q2</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prio-card">
+        <div class="prio-num">04</div>
+        <div class="prio-body">
+          <h3>Build Monthly 30+ extended-stay base</h3>
+          <p class="prio-desc">Monthly 30+ bucket is 4.1% of Q1 captured-segment revenue &mdash; materially below the ROOST brand extended-stay archetype. Develop Churchill Living, Sirva, BridgeStreet, National Corporate Housing, and Austin-local relocation specialists to build the paying Monthly base.</p>
+          <div class="prio-impact">
+            <div><span class="ilbl">Target</span><span class="ival">Monthly &ge; 12% of rev</span></div>
+            <div><span class="ilbl">Upside</span><span class="ival">Stable base + higher LOS</span></div>
+            <div><span class="ilbl">Timing</span><span class="ival">End of Q2</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prio-card">
+        <div class="prio-num">05</div>
+        <div class="prio-body">
+          <h3>Build Tripadvisor review volume</h3>
+          <p class="prio-desc">Reinstate Tripadvisor widget placement in confirmation and post-stay flows. Drive review count from 3 toward 30+ by end of Q2 to unlock ranking-visibility leverage. Revinate 4.73 on 67 reviews proves the sentiment exists &mdash; the constraint is directing volume onto Tripadvisor specifically.</p>
+          <div class="prio-impact">
+            <div><span class="ilbl">Target</span><span class="ival">Tripadvisor &ge; 30 reviews</span></div>
+            <div><span class="ilbl">Upside</span><span class="ival">Ranking-visibility lift</span></div>
+            <div><span class="ilbl">Timing</span><span class="ival">End of Q2</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prio-card">
+        <div class="prio-num">06</div>
+        <div class="prio-body">
+          <h3>Hold the March stabilized run-rate</h3>
+          <p class="prio-desc">Preserve the March operating profile &mdash; Room Revenue $345K, Total Compensation ~$87K, Sales &amp; Marketing ~$18K, NOI ~$131K &mdash; as Q2 volume rises. Monthly category review with department heads; formal variance check before any discretionary spend release as ramp-year budget cushions phase out.</p>
+          <div class="prio-impact">
+            <div><span class="ilbl">Target</span><span class="ival">NOI margin &ge; 35% monthly</span></div>
+            <div><span class="ilbl">Upside</span><span class="ival">Stabilized Q2 run-rate</span></div>
+            <div><span class="ilbl">Timing</span><span class="ival">Continuous Q2</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tldr">
+      <div class="tag">The strategic takeaway</div>
+      <p><strong>The first full quarter is a ramp completed &mdash; not yet a stabilized print.</strong> March's $131K NOI, 71.6% Occ, MPI 102.0, and Revinate 4.73 rating collectively demonstrate that the operating model, commercial engine, and product quality are all performing. Q1's consolidated -$5K NOI reflects the ramp absorption the business plan anticipated, with paying-guest-only reads further improving on closer inspection once the ownership-directed complimentary block is factored out. The Q2 plan converts March's stabilized print into a repeatable monthly run-rate by closing the ADR gap on Austin compression nights, repricing or formalizing the LV Collective block, scaling the Austin tech / corporate / extended-stay book, and building review volume to match the ratings the property is already earning. Each priority maps to a measurable lever in this review &mdash; the upside is the difference between a successful ramp and a market-outperforming stabilized asset.</p>
+    </div>
+  </section>
+
+  <!-- ===================== TAKEAWAYS ROLL-UP ===================== -->
+  <section class="part">
+    <div class="kicker">Deck &middot; Four-Point Summary</div>
+    <h2 class="ph">The headline in four lines.</h2>
+    <div class="take">
+      <div class="t g">
+        <h4>Strength</h4>
+        <p>March delivered $131K of NOI on 71.6% Occ and Room Revenue of $345K (+$83K vs budget, +31.5%) &mdash; the property's first stabilized profitable month. MPI 102.0 confirms occupancy share has been won; blended Review Rating 4.73 (Rank #2 of 6 in comp set, Comp Index 107.3), NPS 56.3, and #1 rank on four of five category star ratings place sentiment at the top of the Austin comp set from day one.</p>
+      </div>
+      <div class="t">
+        <h4>Areas of Focus</h4>
+        <p>ADR gap to Austin CBD luxury comp set (-$78/night) and ARI 76.7 in March are the clearest rate-recapture opportunity. Ownership-directed complimentary / subsidized block (~528 RN / ~25% of Q1) materially distorts reported KPIs. Tripadvisor review volume (3 reviews, #193 ranking) is the highest-leverage visibility build.</p>
+      </div>
+      <div class="t i">
+        <h4>Opportunity</h4>
+        <p>Austin peak-season compression (ACL, graduation, F1, summer leisure) is the rate window. Austin tech / corporate / film-production book is structurally large and currently un-indexed. The Monthly 30+ extended-stay base (4.1% of Q1) sits well below the ROOST brand archetype &mdash; corporate-housing and relocation development is the path to close it.</p>
+      </div>
+      <div class="t w">
+        <h4>Next Step</h4>
+        <p>Execute the six-priority Q2 plan: close ADR gap on compression, reprice or formalize LV Collective block, build Austin direct-corporate &amp; tech book, build Monthly 30+ extended-stay base, build Tripadvisor review volume, and hold the March stabilized run-rate as the monthly norm.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="backtocontents-wrap"><a class="backtocontents" href="#contents">Back to Contents</a></div>
+
+  <footer>
+    <span>ROOST Rainey Ownership Presentation &middot; Sections 1-9 &middot; March 2026 + Q1 2026 YTD</span>
+    <span>Sources: Rainey March 2026 Financial Package &middot; Monthly STR &middot; LOS Segment Drilldown &middot; Company Segment Drilldown &middot; Revinate Quarterly Guest Satisfaction Report (GS-ROOST_Rainey-Q1_'26_quarterly) &middot; Period: Jan 1 &ndash; Mar 31, 2026</span>
+  </footer>
+
+</div>
+
+<a href="#top" class="backtotop-float" aria-label="Back to top" title="Back to top"></a>
+
+</body>
+</html>
